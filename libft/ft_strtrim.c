@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 22:19:24 by moouahab          #+#    #+#             */
-/*   Updated: 2023/10/22 22:19:24 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:22:32 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strtrim(char const	*s1, char const	*set)
 		return (NULL);
 	while (*s1 && ft_strchr(set, *s1))
 		s1++;
-	len = strlen(s1);
+	len = ft_strlen(s1);
 	while (ft_strchr(set, s1[len - 1]) && len > 0)
 		len--;
 	dest = ft_substr(s1, 0, len);

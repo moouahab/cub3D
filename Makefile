@@ -23,6 +23,8 @@ endif
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = srcs/main.c
+SRCS += srcs/utils/init_mlx.c srcs/utils/hooks.c
+SRCS += error/err_msg.c 
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

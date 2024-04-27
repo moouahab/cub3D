@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 15:07:45 by moouahab         ###   ########.fr       */
+/*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
+/*   Updated: 2024/04/27 13:59:46 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int main(int    ac, char **av)
+bool    parsing(int ac, char **av, t_mlx **mlx)
 {
-    (void)ac; (void)av;
-    t_mlx   data;
-
-    
-    if (data_init(&data))
-        mlx_loop(data.mlx_ptr);
-    return (0);
+    if (ac == 2)
+    {
+               
+    }
+    return (true);
 }
