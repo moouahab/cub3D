@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 19:51:19 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:57:46 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	free_cardinal(t_map *map)
 {
-  
     if (map->texture_north)
 	    free(map->texture_north);
 	if (map->texture_south)
@@ -24,6 +23,17 @@ void	free_cardinal(t_map *map)
 	if (map->texture_west)
         free(map->texture_west);
 }
+
+void	free_get_net_line(char *line, int fd_file)
+{
+	while (line != NULL)
+	{
+		line = get_next_line(fd_file);
+		free(line);
+	}
+	close(fd_file);
+}
+
 
 int	window_close(t_mlx	*data)
 {

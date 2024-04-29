@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 19:36:32 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:04:30 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int					free_window(int keysym, t_mlx *data);
 
 // parsing functions
 int					find_path(char *line);
+void				init_texture(t_map	**map);
 void				extract_colors(char *line, t_map *map);
 void				extract_color(t_rgb *color, char *line, int i, char c);
 bool				check_map(t_map *map, char *filename);

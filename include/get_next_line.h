@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:09:58 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 20:38:22 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 22:46:42 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 #  define BUFFER_SIZE 5
 # endif
 
+
+
+void	free_get_net_line(char *line, int fd_file);
 char	*get_next_line(int fd);
 char	*ft_join(char *s1, char *s2);
 char	*print_line(char **temp);

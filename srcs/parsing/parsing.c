@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 19:57:53 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:02:32 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // cas erreur possible :
 // si il a un cote ouver ERROR DE MAP
 // si il a deux jouer ERROR DE PERSONNAGE
+
 
 bool	check_extension(char *filename)
 {

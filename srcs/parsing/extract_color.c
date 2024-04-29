@@ -6,11 +6,19 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 21:18:41 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:03:58 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	init_texture(t_map	**map)
+{
+	(*map)->texture_east = NULL;
+	(*map)->texture_west = NULL;
+    (*map)->texture_south = NULL;
+	(*map)->texture_north = NULL;
+}
 
 void	init_color(t_rgb **color, int i, char *tmp)
 {
