@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:02:32 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:17:44 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 // cas erreur possible :
 // si il a un cote ouver ERROR DE MAP
 // si il a deux jouer ERROR DE PERSONNAGE
+
 
 
 bool	check_extension(char *filename)
@@ -69,7 +70,11 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 	{
 		if (!check_file(av[1]))
 			return (false);
-		check_map(&mlx->map, av[1]);
+		if (!check_map(&mlx->map, av[1]))
+		{
+			free_cardinal(&mlx->map);
+			return (false);
+		}
 		free_cardinal(&mlx->map);
 	}
 	return (true);

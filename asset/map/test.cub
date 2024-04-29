@@ -1,10 +1,10 @@
 NO  ./path_to_the_north_texture
 SO  ./path_to_the_south_texture
-WE  ./path_to_the_east_texture
-EA  ./path_to_the_est_texture
+WE  ./path_to_the_eat_texture
+EA  ./path_to_the_east_texture
  
-C 225,30, 20
-F 22,30, 20
+C 220,142,20
+F 225,154,20
 
 
 1111111111111111111111111

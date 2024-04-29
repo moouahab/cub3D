@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:05:16 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:41:43 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,26 +44,37 @@ char	*extract_texture_path(char *line, char c, char y, int i)
 bool	extract_data(t_map *map, char *line)
 {
 	if (ft_strnstr(line, "NO", ft_strlen(line)))
+	{
 		map->texture_north = extract_texture_path(line, 'N', 'O', 0);
-	else if (ft_strnstr(line, "SO", ft_strlen(line)))
-		map->texture_south = extract_texture_path(line, 'S', 'O', 0);
-	else if (ft_strnstr(line, "WE", ft_strlen(line)))
-		map->texture_west = extract_texture_path(line, 'W', 'E', 0);
-	else if (ft_strnstr(line, "EA", ft_strlen(line)))
-		map->texture_east = extract_texture_path(line, 'E', 'A', 0);
-	extract_colors(line, map);
-	free(line);
-	if (map->texture_north != NULL || map->texture_south != NULL
-		|| map->texture_east != NULL || map->texture_west != NULL)
+		free(line);
 		return (true);
-	else if (map->texture_north == NULL || map->texture_south == NULL
-		|| map->texture_east == NULL || map->texture_west == NULL)
-		return (false);
-	return (true);
+	}
+	else if (ft_strnstr(line, "SO", ft_strlen(line)))
+	{
+		map->texture_south = extract_texture_path(line, 'S', 'O', 0);
+		free(line);
+		return (true);
+	}
+	else if (ft_strnstr(line, "WE", ft_strlen(line)))
+	{
+		map->texture_west = extract_texture_path(line, 'W', 'E', 0);
+		free(line);
+		return (true);
+	}
+	else if (ft_strnstr(line, "EA", ft_strlen(line)))
+	{
+		map->texture_east = extract_texture_path(line, 'E', 'A', 0);
+		free(line);
+		return (true);
+	}
+	return (extract_colors(line, map));
 }
 
 bool	check_argument(t_map *map)
 {
+	if (!map->texture_north || !map->texture_south || !map->texture_west
+		|| !map->texture_east)
+		return (false);
 	if (!ft_strcmp(map->texture_north, map->texture_south))
 		return (false);
 	if (!ft_strcmp(map->texture_west, map->texture_east))

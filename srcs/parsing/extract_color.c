@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:03:58 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 23:39:31 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ void	extract_color(t_rgb *color, char *line, int i, char c)
 	return (free(tmp));
 }
 
-void	extract_colors(char *line, t_map *map)
+bool	extract_colors(char *line, t_map *map)
 {
 	if (ft_strnstr(line, "F", ft_strlen(line)))
 		extract_color(&map->color_sol, line, 0, 'F');
 	if (ft_strnstr(line, "C", ft_strlen(line)))
 		extract_color(&map->color_ceiling, line, 0, 'C');
+	free(line);
+	return (true);
 }
