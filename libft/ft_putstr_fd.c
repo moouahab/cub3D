@@ -3,19 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 03:06:56 by moouahab          #+#    #+#             */
-/*   Updated: 2023/11/11 13:33:42 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/27 22:57:57 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdbool.h>
 
-void	ft_putstr_fd(char	*str, int fd)
+bool	ft_putstr_fd(char	*str, int fd)
 {
 	if (!str)
-		return ;
+		return (false);
 	while (*str)
 		ft_putchar_fd(*str++, fd);
+	if (fd == STDERR_FILENO)
+		return (false);
+	else
+		return (true);
 }

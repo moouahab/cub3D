@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 01:04:15 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 22:02:52 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 20:55:45 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ char	*get_next_line(int fd)
 	buffer = (char *)malloc((BUFFER_SIZE + 1) * sizeof(char));
 	if (!buffer)
 		return (NULL);
-
 	while (nbyte > 0)
 	{
 		nbyte = read(fd, buffer, BUFFER_SIZE);

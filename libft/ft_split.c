@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 21:17:45 by moouahab          #+#    #+#             */
-/*   Updated: 2023/11/30 21:12:44 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 18:33:18 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_is_sp(char s, char c)
 	return (0);
 }
 
-static int	ft_count_word(char	*str, char c)
+int	ft_count_word(char	*str, char c)
 {
 	int	inside_word;
 	int	count;

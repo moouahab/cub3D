@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 22:33:28 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/27 22:56:48 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	main(int ac, char **av)
 
 	if (parsing(ac, av, &mlx))
 	{
-		return 0;
+		return (0);
 	}
 	else
-		printf("Error\n");
+		return (ft_putstr_fd("Error\n", STDERR_FILENO) + 1);
 	return (0);
 }

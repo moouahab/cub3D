@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 22:26:48 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 19:57:53 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,34 +62,14 @@ bool	check_file(char *filename)
 	return (false);
 }
 
-bool    check_map(t_map *map, char *filename)
-{	
-	char	*line;
-	
-    map->fd_file = open(filename , O_RDONLY);
-    if (map->fd_file == -1)
-    {
-        ft_putstr_fd("Error\n", 1);
-        return (false);
-	}
-	line = get_next_line(map->fd_file);
-	while (line != NULL)
-	{
-		printf("line == %s", line);
-		free(line);
-		line = get_next_line(map->fd_file);
-	}
-	close(map->fd_file);
-    return (true);
-}
-
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
 	if (ac == 2)
 	{
-        if (!check_file(av[1]))
-            return (false);
-        check_map(&mlx->map, av[1]);
+		if (!check_file(av[1]))
+			return (false);
+		check_map(&mlx->map, av[1]);
+		free_cardinal(&mlx->map);
 	}
 	return (true);
 }

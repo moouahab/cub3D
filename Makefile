@@ -23,9 +23,9 @@ endif
 LIBFT = $(LIBFT_DIR)/libft.a
 
 SRCS = srcs/main.c
-SRCS += srcs/utils/init_mlx.c srcs/utils/hooks.c srcs/utils/parsing.c
-SRCS += error/err_msg.c 
-SRCS += libft/get_next_line.c libft/get_next_line_utils.c
+SRCS += srcs/utils/init_mlx.c srcs/utils/hooks.c srcs/parsing/parsing.c
+SRCS += error/err_msg.c error/free.c srcs/parsing/check_map.c srcs/parsing/extract_color.c
+SRCS += libft/get_next_line.c libft/get_next_line_utils.c libft/ft_strtok.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 
