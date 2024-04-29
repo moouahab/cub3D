@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 19:56:16 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/29 21:18:41 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	extract_color(t_rgb *color, char *line, int i, char c)
 		i++;
 	}
 	init_color(&color, 0, tmp);
-	return (free(tmp), free(line));
+	return (free(tmp));
 }
 
 void	extract_colors(char *line, t_map *map)
