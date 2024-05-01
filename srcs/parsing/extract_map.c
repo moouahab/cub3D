@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:07:54 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 14:08:36 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:15:17 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ bool	inside_map(char *line, t_map *map)
 {
 	static int	passage;
 
+	if (!line)
+	    return (false);
 	if (!passage && find_line_first_end_last_map(line))
 	{
 		passage = 1;
@@ -66,5 +68,11 @@ bool	check_line(char *line)
 		}
 		i++;
 	}
+	return (true);
+}
+
+
+bool    extract_map(char *line, t_map *map)
+{
 	return (true);
 }

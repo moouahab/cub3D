@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 16:23:39 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:07:04 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static bool	extract_texture_if_needed(char **texture, char *line,
 	if (*texture == NULL && ft_strnstr(line, pattern, ft_strlen(line)))
 	{
 		*texture = extract_texture_path(line, pattern[0], pattern[1], 0);
-		if (!*texture || (*texture)[0] == 0  || *texture == NULL)
+		if (!*texture || (*texture)[0] == 0 || *texture == NULL)
 		{
 			free(line);
 			return (false);
@@ -64,11 +64,11 @@ bool	extract_data(t_map *map, char *line)
 		|| !extract_texture_if_needed(&map->texture_east, line, "EA"))
 		return (false);
 	else if (ft_strchr(line, 'F') || ft_strchr(line, 'C'))
-		extract_colors(line, map);
-	else if (!check_line(line) || (!inside_map(line, map) && !check_line(line)))
-		return (false);
+		return (extract_colors(line, &map));
+	else if (!check_line(line) || (inside_map(line, map) && !check_line(line)))
+		return false;
 	else if (inside_map(line, map))
-		printf("line %s", line);
+		printf("line : %s", line);
 	free(line);
 	return (true);
 }
@@ -80,21 +80,21 @@ bool	check_argument(t_map *map)
 		return (ft_putstr_fd("\033[1;31mError: extract_data not success !\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_south))
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 1\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_west, map->texture_east))
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 2\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_south, map->texture_east))
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 3\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_west))
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 4\033[0m\n",
 				STDERR_FILENO));
 	if (map->color_ceiling.blue == map->color_sol.blue
 		&& map->color_sol.red == map->color_ceiling.red
 		&& map->color_sol.green == map->color_ceiling.green)
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 5\033[0m\n",
 				STDERR_FILENO));
 	if (map->beggin_map == false)
 		return (ft_putstr_fd("\033[1;31mError: map not find\033[0m\n",
@@ -121,5 +121,8 @@ bool	check_map(t_map *map, char *filename)
 		line = get_next_line(map->fd_file);
 	}
 	close(map->fd_file);
+	if (!is_init_color(map))
+		return (ft_putstr_fd("\033[1;31mError: color not init!\033[0m\n",
+					STDERR_FILENO));
 	return (check_argument(map));
 }

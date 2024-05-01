@@ -6,28 +6,26 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 13:36:42 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 19:11:33 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-
 void	free_cardinal(t_map *map)
 {
-    if (map->texture_north)
+    if (map->texture_north != NULL)
 	    free(map->texture_north);
-	if (map->texture_south)
+	if (map->texture_south != NULL)
         free(map->texture_south);
-	if (map->texture_east)
+	if (map->texture_east != NULL)
         free(map->texture_east);
-	if (map->texture_west)
+	if (map->texture_west != NULL)
         free(map->texture_west);
 }
 
 void	free_get_net_line(char *line, int fd_file)
 {
-	
 	while (line != NULL)
 	{
 		line = get_next_line(fd_file);
