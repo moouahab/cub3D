@@ -6,11 +6,12 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 22:57:46 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:36:42 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
 
 void	free_cardinal(t_map *map)
 {
@@ -26,6 +27,7 @@ void	free_cardinal(t_map *map)
 
 void	free_get_net_line(char *line, int fd_file)
 {
+	
 	while (line != NULL)
 	{
 		line = get_next_line(fd_file);
@@ -33,7 +35,6 @@ void	free_get_net_line(char *line, int fd_file)
 	}
 	close(fd_file);
 }
-
 
 int	window_close(t_mlx	*data)
 {

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:41:43 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 16:23:39 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,52 +41,64 @@ char	*extract_texture_path(char *line, char c, char y, int i)
 	return (NULL);
 }
 
+static bool	extract_texture_if_needed(char **texture, char *line,
+		const char *pattern)
+{
+	if (*texture == NULL && ft_strnstr(line, pattern, ft_strlen(line)))
+	{
+		*texture = extract_texture_path(line, pattern[0], pattern[1], 0);
+		if (!*texture || (*texture)[0] == 0  || *texture == NULL)
+		{
+			free(line);
+			return (false);
+		}
+	}
+	return (true);
+}
+
 bool	extract_data(t_map *map, char *line)
 {
-	if (ft_strnstr(line, "NO", ft_strlen(line)))
-	{
-		map->texture_north = extract_texture_path(line, 'N', 'O', 0);
-		free(line);
-		return (true);
-	}
-	else if (ft_strnstr(line, "SO", ft_strlen(line)))
-	{
-		map->texture_south = extract_texture_path(line, 'S', 'O', 0);
-		free(line);
-		return (true);
-	}
-	else if (ft_strnstr(line, "WE", ft_strlen(line)))
-	{
-		map->texture_west = extract_texture_path(line, 'W', 'E', 0);
-		free(line);
-		return (true);
-	}
-	else if (ft_strnstr(line, "EA", ft_strlen(line)))
-	{
-		map->texture_east = extract_texture_path(line, 'E', 'A', 0);
-		free(line);
-		return (true);
-	}
-	return (extract_colors(line, map));
+	if (!extract_texture_if_needed(&map->texture_north, line, "NO")
+		|| !extract_texture_if_needed(&map->texture_south, line, "SO")
+		|| !extract_texture_if_needed(&map->texture_west, line, "WE")
+		|| !extract_texture_if_needed(&map->texture_east, line, "EA"))
+		return (false);
+	else if (ft_strchr(line, 'F') || ft_strchr(line, 'C'))
+		extract_colors(line, map);
+	else if (!check_line(line) || (!inside_map(line, map) && !check_line(line)))
+		return (false);
+	else if (inside_map(line, map))
+		printf("line %s", line);
+	free(line);
+	return (true);
 }
 
 bool	check_argument(t_map *map)
 {
 	if (!map->texture_north || !map->texture_south || !map->texture_west
 		|| !map->texture_east)
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: extract_data not success !\033[0m\n",
+				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_south))
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_west, map->texture_east))
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_south, map->texture_east))
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_west))
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+				STDERR_FILENO));
 	if (map->color_ceiling.blue == map->color_sol.blue
 		&& map->color_sol.red == map->color_ceiling.red
 		&& map->color_sol.green == map->color_ceiling.green)
-		return (false);
+		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
+				STDERR_FILENO));
+	if (map->beggin_map == false)
+		return (ft_putstr_fd("\033[1;31mError: map not find\033[0m\n",
+				STDERR_FILENO));
 	return (true);
 }
 
@@ -94,7 +106,6 @@ bool	check_map(t_map *map, char *filename)
 {
 	char	*line;
 
-	init_texture(&map);
 	map->fd_file = open(filename, O_RDONLY);
 	if (map->fd_file == -1)
 		return (ft_putstr_fd("Error\n", STDERR_FILENO));
@@ -104,14 +115,11 @@ bool	check_map(t_map *map, char *filename)
 		if (!extract_data(map, line))
 		{
 			free_get_net_line(line, map->fd_file);
-			return (ft_putstr_fd("\033[1;31mError: extract_data not success!\033[0m\n",
+			return (ft_putstr_fd("\033[1;31mError: extract_data not success !\033[0m\n",
 					STDERR_FILENO));
 		}
 		line = get_next_line(map->fd_file);
 	}
-	if (!check_argument(map))
-		return (ft_putstr_fd("\033[1;31mError: not argument valid\033[0m\n",
-				STDERR_FILENO));
 	close(map->fd_file);
-	return (true);
+	return (check_argument(map));
 }

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:39:46 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 12:59:33 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ typedef struct s_rgb
 
 typedef struct s_map
 {
-	char			**map;
 	int				fd_file;
+	bool			beggin_map;
 	char			*texture_north;
 	char			*texture_south;
 	char			*texture_west;
@@ -79,14 +79,20 @@ bool				error_msg(char *msg, void *display);
 void				event_hook(t_mlx *data);
 
 // free functions
+
 void				free_cardinal(t_map *map);
 int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
 
 // parsing functions
 int					find_path(char *line);
-void				init_texture(t_map	**map);
+void				init_rgb(t_rgb *color);
+void				init_texture(t_map **map);
+void				data_map_init(t_map *map);
 void				extract_color(t_rgb *color, char *line, int i, char c);
+bool				check_line(char *line);
+bool				inside_map(char *line, t_map *map);
+bool				find_line_first_end_last_map(char *line);
 bool				extract_colors(char *line, t_map *map);
 bool				check_map(t_map *map, char *filename);
 bool				parsing(int ac, char **av, t_mlx *mlx);

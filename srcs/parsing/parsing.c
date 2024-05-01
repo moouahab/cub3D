@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:17:44 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/01 13:35:47 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,13 @@ bool	check_file(char *filename)
 
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
+	data_map_init(&mlx->map);
+	
 	if (ac == 2)
 	{
 		if (!check_file(av[1]))
-			return (false);
+			return (ft_putstr_fd("\033[1;31mError: not file\033[0m\n",
+				STDERR_FILENO));
 		if (!check_map(&mlx->map, av[1]))
 		{
 			free_cardinal(&mlx->map);

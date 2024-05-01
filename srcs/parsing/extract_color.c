@@ -6,27 +6,16 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 23:39:31 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/04/30 11:39:14 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	init_texture(t_map	**map)
-{
-	(*map)->texture_east = NULL;
-	(*map)->texture_west = NULL;
-    (*map)->texture_south = NULL;
-	(*map)->texture_north = NULL;
-}
-
 void	init_color(t_rgb **color, int i, char *tmp)
 {
 	char	*rgb;
 
-	(*color)->red = 0;
-	(*color)->blue = 0;
-	(*color)->green = 0;
 	rgb = ft_strtok(tmp, ",");
 	while (rgb != NULL && i <= 3)
 	{
@@ -59,10 +48,24 @@ void	extract_color(t_rgb *color, char *line, int i, char c)
 
 bool	extract_colors(char *line, t_map *map)
 {
+	static int count_sol;
+	static int count_c;
+
+	if (!count_sol)
+	    count_sol = 0;
+	if (!count_c)
+	    count_c = 0;
+	if (count_c > 0 || count_sol > 0)
+	    return (false);
 	if (ft_strnstr(line, "F", ft_strlen(line)))
+	{
 		extract_color(&map->color_sol, line, 0, 'F');
+		count_sol++;
+	}
 	if (ft_strnstr(line, "C", ft_strlen(line)))
+	{
 		extract_color(&map->color_ceiling, line, 0, 'C');
-	free(line);
+		count_c++;	
+	}
 	return (true);
 }

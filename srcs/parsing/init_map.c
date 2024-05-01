@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/23 00:09:58 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 10:33:12 by moouahab         ###   ########.fr       */
+/*   Created: 2024/04/30 10:35:51 by moouahab          #+#    #+#             */
+/*   Updated: 2024/05/01 13:20:17 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "cub.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include "libft.h"
+void	init_texture(t_map	**map)
+{
+	(*map)->texture_east = NULL;
+	(*map)->texture_west = NULL;
+    (*map)->texture_south = NULL;
+	(*map)->texture_north = NULL;
+}
 
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 5
-# endif
+void	init_rgb(t_rgb *color)
+{
+	color->red = 0;
+	color->blue = 0;
+	color->green = 0;
+}
 
-
-
-void	free_get_net_line(char *line, int fd_file);
-char	*get_next_line(int fd);
-char	*ft_join(char *s1, char *s2);
-char	*print_line(char **temp);
-int		is_n(char *temp);
-
-#endif
+void	data_map_init(t_map *map)
+{
+    map->beggin_map = false;
+	init_texture(&map);
+	init_rgb(&map->color_sol);
+	init_rgb(&map->color_ceiling);
+}
