@@ -6,11 +6,30 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 11:00:17 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:46:57 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+/**
+ * Libère toute la mémoire utilisée par la liste chaînée de lignes de la carte.
+ * @param head La tête de la liste chaînée.
+ */
+void	free_map_lines(t_line *head)
+{
+	t_line	*current;
+	t_line	*next;
+	
+	current = head;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->line);
+		free(current);
+		current = next;
+	}
+}
 
 void	free_cardinal(t_map *map)
 {
@@ -42,6 +61,7 @@ int	window_close(t_mlx	*data)
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	free_cardinal(&data->map);
     close(data->map.fd_file);
 	exit(EXIT_SUCCESS);
 	return (1);

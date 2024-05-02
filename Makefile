@@ -22,10 +22,10 @@ endif
 
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = srcs/main.c srcs/parsing/extract_map.c
+SRCS = srcs/main.c srcs/parsing/extract_map.c srcs/parsing/extract_data.c
 SRCS += srcs/utils/init_mlx.c srcs/utils/hooks.c srcs/parsing/parsing.c srcs/parsing/init_map.c
 SRCS += error/err_msg.c error/free.c srcs/parsing/check_map.c srcs/parsing/extract_color.c
-SRCS += libft/get_next_line.c libft/get_next_line_utils.c libft/ft_strtok.c
+SRCS += libft/get_next_line.c libft/get_next_line_utils.c libft/ft_strtok.c srcs/utils/extract_map_utils.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

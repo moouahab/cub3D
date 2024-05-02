@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 10:49:20 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:53:26 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,20 @@ void				free_cardinal(t_map *map);
 int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
 
+// function extraction
+bool				extract_data(t_map *map, char *line);
+bool				recovery_colors(char *line, t_map **map);
+bool				extract_color(t_rgb *color, char *line, int i, char c);
+
 // parsing functions
 bool				is_init_color(t_map *map);
 int					find_path(char *line);
 void				init_rgb(t_rgb *color);
 void				init_texture(t_map **map);
 void				data_map_init(t_map *map);
-bool				extract_color(t_rgb *color, char *line, int i, char c);
 bool				check_line(char *line);
 bool				inside_map(char *line, t_map *map);
 bool				find_line_first_end_last_map(char *line);
-bool				extract_colors(char *line, t_map **map);
 bool				check_map(t_map *map, char *filename);
 bool				parsing(int ac, char **av, t_mlx *mlx);
 

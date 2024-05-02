@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 10:39:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:36:50 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ bool	extract_color(t_rgb *color, char *line, int i, char c)
 	return (init_color(&color, 0, tmp));
 }
 
-bool	extract_colors(char *line, t_map **map)
+bool	recovery_colors(char *line, t_map **map)
 {
 	if (ft_strchr(line, 'F'))
 	{
@@ -87,5 +87,10 @@ bool	is_init_color(t_map *map)
 	if (map->color_ceiling.blue < 0 || map->color_ceiling.red < 0
 		|| map->color_ceiling.green < 0)
 		return (false);
+	if (map->color_ceiling.blue == map->color_sol.blue
+		&& map->color_sol.red == map->color_ceiling.red
+		&& map->color_sol.green == map->color_ceiling.green)
+		return (ft_putstr_fd("\033[1;31mError: not argument valid 5\033[0m\n",
+				STDERR_FILENO));
 	return (true);
 }
