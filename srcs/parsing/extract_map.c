@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:07:54 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 19:15:17 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:00:31 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ bool	inside_map(char *line, t_map *map)
 	static int	passage;
 
 	if (!line)
-	    return (false);
+		return (false);
 	if (!passage && find_line_first_end_last_map(line))
 	{
 		passage = 1;
@@ -50,7 +50,7 @@ bool	inside_map(char *line, t_map *map)
 
 bool	check_line(char *line)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_strnstr(line, "NO", ft_strlen(line)) || ft_strnstr(line, "EA",
@@ -71,8 +71,66 @@ bool	check_line(char *line)
 	return (true);
 }
 
-
-bool    extract_map(char *line, t_map *map)
+/**
+ * @param : line va est la line recupere par gnl
+ * @param : map est une liste chaine qui va stoker
+ * 			une line dans chaqu'une de ces noeud
+ * @return : true si la line est bien recupere si non
+ * 			false
+ *
+ * typedef struct s_line
+ * {
+ * 		char			*line;
+ * 		size_t			line_len;
+ * 		struct s_line	*next;
+ * }					t_line;
+ */
+bool	add_map_line(t_line **head, char *line)
 {
+	t_line	*new_node;
+	t_line	*current;
+
+	if (!line)
+		return (false);
+	new_node = malloc(sizeof(t_line));
+	if (!new_node)
+		return (false);
+	new_node->line = ft_strdup(line);
+	if (!new_node->line)
+	{
+		free(new_node);
+		return (false);
+	}
+	new_node->line_len = ft_strlen(line);
+	new_node->next = NULL;
+	if (*head == NULL)
+		*head = new_node;
+	else
+	{
+		current = *head;
+		while (current->next != NULL)
+			current = current->next;
+		current->next = new_node;
+	}
+	free(line);
 	return (true);
+}
+
+/**
+ * Libère toute la mémoire utilisée par la liste chaînée de lignes de la carte.
+ * @param head La tête de la liste chaînée.
+ */
+void	free_map_lines(t_line *head)
+{
+	t_line	*current;
+	t_line	*next;
+	
+	current = head;
+	while (current != NULL)
+	{
+		next = current->next;
+		free(current->line);
+		free(current);
+		current = next;
+	}
 }

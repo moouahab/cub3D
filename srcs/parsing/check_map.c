@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 19:07:04 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:55:50 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	extract_data(t_map *map, char *line)
 	else if (!check_line(line) || (inside_map(line, map) && !check_line(line)))
 		return false;
 	else if (inside_map(line, map))
-		printf("line : %s", line);
+		return add_map_line(&map->line, line);
 	free(line);
 	return (true);
 }
@@ -102,6 +102,18 @@ bool	check_argument(t_map *map)
 	return (true);
 }
 
+/**
+ * check_map va ouvir un fichier esser de le lire avec
+ * avec gnl chaque line sera stkoer et liber achaque fois
+ * grace a extract_data qui recuper chaque donne qui ce trouve 
+ * dans le fichier est verifier que l'extraction c'est bien passer
+ * 
+ * 
+ * une verification est pour savoir si le donner son bonne  
+ * 
+ * 
+*/
+
 bool	check_map(t_map *map, char *filename)
 {
 	char	*line;
@@ -121,6 +133,12 @@ bool	check_map(t_map *map, char *filename)
 		line = get_next_line(map->fd_file);
 	}
 	close(map->fd_file);
+	t_line *head  = map->line;
+	while (head)
+	{
+		printf("line : %s\n", head->line);;
+		head = head->next;
+	}
 	if (!is_init_color(map))
 		return (ft_putstr_fd("\033[1;31mError: color not init!\033[0m\n",
 					STDERR_FILENO));

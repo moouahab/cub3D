@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 19:11:33 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:00:17 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	free_cardinal(t_map *map)
         free(map->texture_east);
 	if (map->texture_west != NULL)
         free(map->texture_west);
+	free_map_lines(map->line);
 }
 
 void	free_get_net_line(char *line, int fd_file)

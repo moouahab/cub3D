@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 13:35:47 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:20:15 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,21 @@ bool	check_file(char *filename)
 	return (false);
 }
 
+/**
+ * la function parsing va vreifer que chaque donne 
+ * de configuracion sont correctement recupere 
+ * toute en virifent la validation des donne
+ * 
+ * elle utilise check_file afin de pouvoire  
+ * connaitre si l'extension est correcte si 
+ * oui nous bouvont passer check_map elle recupere 
+ * et verifier l'interieur de du fichier c'est le 
+ * coeur de parsing 
+*/
+
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
 	data_map_init(&mlx->map);
-	
 	if (ac == 2)
 	{
 		if (!check_file(av[1]))
@@ -79,6 +90,9 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 			return (false);
 		}
 		free_cardinal(&mlx->map);
+		return (true);
 	}
-	return (true);
+	else
+		return (ft_putstr_fd("\033[1;31mError: parsing\033[0m\n",
+				STDERR_FILENO));
 }
