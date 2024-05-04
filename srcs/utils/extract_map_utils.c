@@ -6,11 +6,12 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:56:27 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 12:56:57 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:25:25 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include <limits.h>
 
 bool	find_line_first_end_last_map(char *line)
 {
@@ -60,7 +61,7 @@ bool	check_line(char *line)
 	while (line[i] && i < (int)ft_strlen(line))
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
-			&& line[i] != '\n')
+			&& line[i] != '\n' && line[i] != 'W' && line[i] != 'S' && line[i] != 'E')
 		{
 			printf("je suis %s\n", line);
 			free(line);
@@ -69,4 +70,39 @@ bool	check_line(char *line)
 		i++;
 	}
 	return (true);
+}
+
+size_t	size_map(t_line *line)
+{
+	t_line		*head;
+	size_t    	size;
+
+	if (line == NULL)
+		return -1;
+    size = 0;
+	head = line;
+    while (head)
+    {
+        size++;
+        head = head->next;
+    }
+    return (size);
+}
+
+size_t	size_max_line(t_line	*line)
+{
+	t_line        *head;
+    size_t        size;
+
+    if (line == NULL)
+        return -1;
+    size = 0;
+    head = line;
+    while (head)
+    {
+        if (size < head->line_len)
+            size = head->line_len;
+        head = head->next;
+    }
+    return (size);
 }

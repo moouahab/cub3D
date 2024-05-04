@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 12:51:39 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:25:41 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,14 +56,50 @@ bool	check_argument(t_map *map)
 /**
  * check_map va ouvir un fichier esser de le lire avec
  * avec gnl chaque line sera stkoer et liber achaque fois
- * grace a extract_data qui recuper chaque donne qui ce trouve 
+ * grace a extract_data qui recuper chaque donne qui ce trouve
  * dans le fichier est verifier que l'extraction c'est bien passer
- * 
- * 
- * une verification est pour savoir si le donner son bonne  
- * 
- * 
-*/
+ *
+ *
+ * une verification est pour savoir si le donner son bonne
+ *
+ *
+ */
+
+/**
+ * [Cas d'une map fause]
+ *
+ * - 1 . une map non fremer exemple
+ *
+ * 1111111111111111
+ * 100000000000000 <= cette line de map n'est pas ferme
+ * 1111111111111111
+ *
+ * - 2 . une map qui ne contient pas de joueur
+ * exemple
+ *
+ * 1111111111111111111
+ * 1000000000000000001  <= cette line de map na pas de joueur
+ * 1111111111111111111
+ *
+ * - 3 le jouer N ce retrouve en dehore de la map
+ * exemple
+ *
+ * 111111111111111111
+
+	* 100000    00000001     N  <= le jouer N ce retrouve en dehore de la map et elle est overte
+ * 111111111111111111
+ */
+
+bool	verify_map(t_map *map)
+{
+	map->map_height = size_map(map->line);
+	if (map->map_height < 3)
+		return (false);
+	map->map_width = size_max_line(map->line);
+	if (map->map_width < 3)
+	    return (false);
+	return (true);
+}
 
 bool	check_map(t_map *map, char *filename)
 {
@@ -84,5 +120,8 @@ bool	check_map(t_map *map, char *filename)
 		line = get_next_line(map->fd_file);
 	}
 	close(map->fd_file);
+	if (!verify_map(map))
+		return (ft_putstr_fd("\033[1;31mError: size map not valide\033[0m\n",
+				STDERR_FILENO));
 	return (check_argument(map));
 }

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:35:51 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 10:47:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:11:00 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ void	data_map_init(t_map *map)
 	init_rgb(&map->color_sol);
 	init_rgb(&map->color_ceiling);
 	map->line = init_line();
+	map->map_width = 0;
+	map->map_height = 0;
 }
