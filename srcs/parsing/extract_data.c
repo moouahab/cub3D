@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:50:57 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 15:56:45 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:47:29 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,33 @@ static bool	extract_texture_if_needed(char **texture, char *line,
 	return (true);
 }
 
+static void	check_double_texture(char	*line, char const *str[4], int *i)
+{
+	int	j;
+
+	j = 0;
+	if (!i)
+		*i = 0;
+	while (j < 4)
+	{
+		if (ft_strncmp(line, str[j], 2) == 0)
+			(*i)++;
+		j++;
+	}
+}
+
 bool	extract_data(t_map *map, char *line)
 {
+	const char	*str[4] = {"NO", "SO", "WE", "EA"};
+	static int	i;
+
+	check_double_texture(line, str, &i);
+	printf("%d\n", i);
+	if (i > 4)
+	{
+		free(line);
+		return (false);
+	}
 	if (!extract_texture_if_needed(&map->texture_north, line, "NO")
 		|| !extract_texture_if_needed(&map->texture_south, line, "SO")
 		|| !extract_texture_if_needed(&map->texture_west, line, "WE")
@@ -52,9 +77,9 @@ bool	extract_data(t_map *map, char *line)
 	else if (ft_strchr(line, 'F') || ft_strchr(line, 'C'))
 		return (recovery_colors(line, &map));
 	else if (!check_line(line) || (inside_map(line, map) && !check_line(line)))
-		return false;
+		return (false);
 	else if (inside_map(line, map))
-		return add_map_line(&map->line, line);
+		return (add_map_line(&map->line, line));
 	free(line);
 	return (true);
 }

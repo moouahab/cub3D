@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:23:12 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 18:33:35 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:47:07 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include <stdbool.h>
 # include <stdlib.h>
 # include <string.h>
-# include <stdbool.h>
 # include <unistd.h>
 
 typedef struct s_list
@@ -36,6 +36,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+char				*ft_strndup(char *s, int len);
 void				ft_putchar_fd(char c, int fd);
 bool				ft_putstr_fd(char *str, int fd);
 void				ft_putendl_fd(char *s, int fd);
@@ -74,6 +75,6 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 char				*ft_strtok(char *str, const char *delim);
-int					ft_count_word(char	*str, char c);
+int					ft_count_word(char *str, char c);
 size_t				ft_strcspn(const char *str, const char *charset);
 #endif

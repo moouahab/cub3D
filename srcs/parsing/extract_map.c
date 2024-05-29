@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:07:54 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 12:58:50 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:45:55 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ t_line	*create_new_node(char *line)
 	new_node = (t_line *)malloc(sizeof(t_line));
 	if (!new_node)
 		return (NULL);
-	new_node->line = ft_strdup(line);
+	if (ft_strchr(line, '\n'))
+		new_node->line = ft_strndup(line, ft_strlen(line) - 1);
+	else
+		new_node->line = ft_strndup(line, ft_strlen(line));
 	if (!new_node->line)
 	{
 		free(new_node);

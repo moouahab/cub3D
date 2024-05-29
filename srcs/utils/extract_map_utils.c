@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map_utils.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:56:27 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 16:25:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/29 18:19:01 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@ bool	check_line(char *line)
 	while (line[i] && i < (int)ft_strlen(line))
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
-			&& line[i] != '\n' && line[i] != 'W' && line[i] != 'S' && line[i] != 'E')
+			&& line[i] != '\n' && line[i] != 'W' && line[i] != 'S'
+			&& line[i] != 'E')
 		{
-			printf("je suis %s\n", line);
 			free(line);
 			return (false);
 		}
@@ -74,35 +74,35 @@ bool	check_line(char *line)
 
 size_t	size_map(t_line *line)
 {
-	t_line		*head;
-	size_t    	size;
+	t_line	*head;
+	size_t	size;
 
 	if (line == NULL)
-		return -1;
-    size = 0;
+		return (-1);
+	size = 0;
 	head = line;
-    while (head)
-    {
-        size++;
-        head = head->next;
-    }
-    return (size);
+	while (head)
+	{
+		size++;
+		head = head->next;
+	}
+	return (size);
 }
 
-size_t	size_max_line(t_line	*line)
+size_t	size_max_line(t_line *line)
 {
-	t_line        *head;
-    size_t        size;
+	t_line	*head;
+	size_t	size;
 
-    if (line == NULL)
-        return -1;
-    size = 0;
-    head = line;
-    while (head)
-    {
-        if (size < head->line_len)
-            size = head->line_len;
-        head = head->next;
-    }
-    return (size);
+	if (line == NULL)
+		return (-1);
+	size = 0;
+	head = line;
+	while (head)
+	{
+		if (size < head->line_len)
+			size = head->line_len;
+		head = head->next;
+	}
+	return (size);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 12:36:50 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/29 17:48:14 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,10 @@ bool	init_color(t_rgb **color, int i, char *tmp)
 	if (rgb == NULL)
 	{
 		free(tmp);
-		return false;
+		return (false);
 	}
 	while (rgb != NULL && i <= 3)
 	{
-		
 		if (i == 0)
 			(*color)->green = ft_atoi(rgb);
 		else if (i == 1)
@@ -64,17 +63,18 @@ bool	recovery_colors(char *line, t_map **map)
 			free(line);
 			return (false);
 		}
-		return extract_color(&(*map)->color_sol, line, 0, 'F');
+		return (extract_color(&(*map)->color_sol, line, 0, 'F'));
 	}
 	if (ft_strchr(line, 'C'))
 	{
-		if (!((*map)->color_ceiling.blue < 0) || !((*map)->color_ceiling.green < 0)
+		if (!((*map)->color_ceiling.blue < 0)
+			|| !((*map)->color_ceiling.green < 0)
 			|| !((*map)->color_ceiling.red < 0))
 		{
 			free(line);
 			return (false);
 		}
-		return extract_color(&(*map)->color_ceiling, line, 0, 'C');
+		return (extract_color(&(*map)->color_ceiling, line, 0, 'C'));
 	}
 	return (false);
 }
@@ -90,7 +90,7 @@ bool	is_init_color(t_map *map)
 	if (map->color_ceiling.blue == map->color_sol.blue
 		&& map->color_sol.red == map->color_ceiling.red
 		&& map->color_sol.green == map->color_ceiling.green)
-		return (ft_putstr_fd("\033[1;31mError: not argument valid 5\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError: not argument valid \033[0m\n",
 				STDERR_FILENO));
 	return (true);
 }
