@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/30 11:00:14 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:26:45 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,17 @@ bool	extract_color(t_rgb *color, char *line, int i, char c)
 	while (line[i])
 	{
 		if (line[i] == c)
+		{
 			tmp = ft_substr(line, start, len - 1);
+			break ;
+		}
 		i++;
 	}
 	free(line);
 	return (init_color(&color, 0, tmp));
 }
 
-bool	recovery_colors(char *line, t_map **map)
+bool	recovery_colors(char *line, t_map **map, int i)
 {
 	if (ft_strchr(line, 'F'))
 	{
@@ -63,6 +66,7 @@ bool	recovery_colors(char *line, t_map **map)
 			free(line);
 			return (false);
 		}
+		(*map)->line_color = i;
 		return (extract_color(&(*map)->color_sol, line, 0, 'F'));
 	}
 	if (ft_strchr(line, 'C'))
@@ -74,6 +78,7 @@ bool	recovery_colors(char *line, t_map **map)
 			free(line);
 			return (false);
 		}
+		(*map)->line_color = i;
 		return (extract_color(&(*map)->color_ceiling, line, 0, 'C'));
 	}
 	return (false);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 10:35:51 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 16:11:00 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 10:43:54 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ void	data_map_init(t_map *map)
 	init_texture(&map);
 	init_rgb(&map->color_sol);
 	init_rgb(&map->color_ceiling);
+	map->line_texture = -1;
+	map->line_map = -1;
+	map->line_color = -1;
 	map->line = init_line();
 	map->map_width = 0;
 	map->map_height = 0;

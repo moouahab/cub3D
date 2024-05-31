@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:50:57 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/30 14:29:59 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:09:38 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	check_double_texture(char	*line, char const *str[4], int *i)
 	}
 }
 
-bool	extract_data(t_map *map, char *line)
+bool	extract_data(t_map *map, char *line, int count_line)
 {
 	const char	*str[4] = {"NO", "SO", "WE", "EA"};
 	static int	i;
@@ -61,16 +61,18 @@ bool	extract_data(t_map *map, char *line)
 	check_double_texture(line, str, &i);
 	if (i > 4)
 		return (free(line), false);
+	if (i == 4 && map->line_texture == -1)
+		map->line_texture = count_line;
 	if (!extract_texture_if_needed(&map->texture_north, line, "NO")
 		|| !extract_texture_if_needed(&map->texture_south, line, "SO")
 		|| !extract_texture_if_needed(&map->texture_west, line, "WE")
 		|| !extract_texture_if_needed(&map->texture_east, line, "EA"))
 		return (false);
 	else if (ft_strchr(line, 'F') || ft_strchr(line, 'C'))
-		return (recovery_colors(line, &map));
+		return (recovery_colors(line, &map, count_line));
 	else if (!check_line(line) || (inside_map(line, map) && !check_line(line)))
 		return (false);
 	else if (inside_map(line, map))
-		return (add_map_line(&map->line, line));
+		return (add_map_line(&map->line, line, map, count_line));
 	return (free(line), true);
 }

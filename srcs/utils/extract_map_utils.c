@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:56:27 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/29 18:19:01 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:22:25 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	find_line_first_end_last_map(char *line)
 	i = 0;
 	while (i < (int)ft_strlen(line) - 1)
 	{
-		if (line[i] == '1' || line[i] == ' ')
+		if (line[i] == '1' || line[i] == ' ' ||  line[i] == '\t')
 			inside_map = true;
 		else
 		{
@@ -38,7 +38,9 @@ bool	inside_map(char *line, t_map *map)
 	static int	passage;
 
 	if (!line)
+	{
 		return (false);
+	}
 	if (!passage && find_line_first_end_last_map(line))
 	{
 		passage = 1;
@@ -62,7 +64,7 @@ bool	check_line(char *line)
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
 			&& line[i] != '\n' && line[i] != 'W' && line[i] != 'S'
-			&& line[i] != 'E')
+			&& line[i] != 'E' && line[i] != '\t')
 		{
 			free(line);
 			return (false);

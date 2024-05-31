@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/30 15:32:13 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:26:23 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,16 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 		if (!check_map(&mlx->map, av[1]))
 		{
 			free_extraction(&mlx->map);
-			return (false);
+			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
+				STDERR_FILENO));
 		}
+		if (!verify_map(&mlx->map))
+		{
+			free_tab2(mlx->map.map);
+			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
+				STDERR_FILENO));
+		}
+		free_tab2(mlx->map.map);
 		free_extraction(&mlx->map);
 		return (true);
 	}
