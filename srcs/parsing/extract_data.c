@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:50:57 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/29 18:47:29 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 14:29:59 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ char	*extract_texture_path(char *line, char c, char y, int i)
 			return (ft_substr(line, start, len - 1));
 		i++;
 	}
-	free(line);
-	return (NULL);
+	return (free(line), NULL);
 }
 
 static bool	extract_texture_if_needed(char **texture, char *line,
@@ -34,10 +33,7 @@ static bool	extract_texture_if_needed(char **texture, char *line,
 	{
 		*texture = extract_texture_path(line, pattern[0], pattern[1], 0);
 		if (!*texture || (*texture)[0] == 0 || *texture == NULL)
-		{
-			free(line);
-			return (false);
-		}
+			return (free(line), false);
 	}
 	return (true);
 }
@@ -63,12 +59,8 @@ bool	extract_data(t_map *map, char *line)
 	static int	i;
 
 	check_double_texture(line, str, &i);
-	printf("%d\n", i);
 	if (i > 4)
-	{
-		free(line);
-		return (false);
-	}
+		return (free(line), false);
 	if (!extract_texture_if_needed(&map->texture_north, line, "NO")
 		|| !extract_texture_if_needed(&map->texture_south, line, "SO")
 		|| !extract_texture_if_needed(&map->texture_west, line, "WE")
@@ -80,6 +72,5 @@ bool	extract_data(t_map *map, char *line)
 		return (false);
 	else if (inside_map(line, map))
 		return (add_map_line(&map->line, line));
-	free(line);
-	return (true);
+	return (free(line), true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:23:12 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/29 18:47:07 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:02:53 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct s_list
 typedef long int	t_longi;
 
 char				*ft_itoa(int n);
+char				*ft_strncpy(char	*dest, const char	*src, size_t n);
 t_longi				ft_atol(const char *str);
 int					ft_atoi(char const *str);
 int					ft_toupper(int c);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/29 17:48:14 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 11:00:14 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ bool	is_init_color(t_map *map)
 	if (map->color_ceiling.blue == map->color_sol.blue
 		&& map->color_sol.red == map->color_ceiling.red
 		&& map->color_sol.green == map->color_ceiling.green)
-		return (ft_putstr_fd("\033[1;31mError: not argument valid \033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\n not argument valid \033[0m\n",
 				STDERR_FILENO));
 	return (true);
 }

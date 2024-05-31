@@ -6,20 +6,23 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:56:30 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 16:22:03 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:26:45 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*ft_strncpy(char	*dest, const char	*src, size_t n)
+char	*ft_strncpy(char	*dest, const char	*src, size_t n)
 {
 	size_t	i;
 
 	i = 0;
 	while (i < n && src[i] != '\0')
 	{
-		dest[i] = src[i];
+		if (src[i] == '\n')
+			dest[i] = ' ';
+		else
+			dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';

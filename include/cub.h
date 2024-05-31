@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 19:55:48 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:01:40 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_map
 	int					map_width;
 	int					map_height;
 	bool				beggin_map;
+	char				**map;
 	char				*texture_north;
 	char				*texture_south;
 	char				*texture_west;
@@ -95,8 +96,9 @@ bool					error_msg(char *msg, void *display);
 void					event_hook(t_mlx *data);
 
 // free functions
+void    				free_tab2(char **tab);
 void					free_map_lines(t_line *head);
-void					free_cardinal(t_map *map);
+void					free_extraction(t_map *map);
 int						window_close(t_mlx *data);
 int						free_window(int keysym, t_mlx *data);
 
@@ -120,6 +122,7 @@ bool					parsing(int ac, char **av, t_mlx *mlx);
 // function utils
 size_t					size_map(t_line *line);
 size_t					size_max_line(t_line *line);
+char					**list_to_array(t_line *head, int height, int width);
 
 // function initializ
 bool					data_init(t_mlx *mlx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/29 18:18:00 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 15:32:13 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,23 +75,24 @@ bool	check_file(char *filename)
  * coeur de parsing
  */
 
+
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
 	data_map_init(&mlx->map);
 	if (ac == 2)
 	{
 		if (!check_file(av[1]))
-			return (ft_putstr_fd("\033[1;31mError: not file\033[0m\n",
+			return (ft_putstr_fd("\033[1;31mError\nnot file\033[0m\n",
 					STDERR_FILENO));
 		if (!check_map(&mlx->map, av[1]))
 		{
-			free_cardinal(&mlx->map);
+			free_extraction(&mlx->map);
 			return (false);
 		}
-		free_cardinal(&mlx->map);
+		free_extraction(&mlx->map);
 		return (true);
 	}
 	else
-		return (ft_putstr_fd("\033[1;31mError: parsing\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nparsing\033[0m\n",
 				STDERR_FILENO));
 }

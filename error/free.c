@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/02 12:46:57 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/30 17:06:12 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	free_map_lines(t_line *head)
 	}
 }
 
-void	free_cardinal(t_map *map)
+void	free_extraction(t_map *map)
 {
     if (map->texture_north != NULL)
 	    free(map->texture_north);
@@ -41,7 +41,9 @@ void	free_cardinal(t_map *map)
         free(map->texture_east);
 	if (map->texture_west != NULL)
         free(map->texture_west);
-	free_map_lines(map->line);
+	if (map->line)
+		free_map_lines(map->line);
+
 }
 
 void	free_get_net_line(char *line, int fd_file)
@@ -61,7 +63,7 @@ int	window_close(t_mlx	*data)
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
-	free_cardinal(&data->map);
+	free_extraction(&data->map);
     close(data->map.fd_file);
 	exit(EXIT_SUCCESS);
 	return (1);
