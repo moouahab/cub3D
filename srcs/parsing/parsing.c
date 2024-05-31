@@ -6,14 +6,14 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 15:24:00 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:42:05 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
 // Le parsing doit check is le fichier que l'on tente
-//d'ouvir est un fichier .cub
+// d'ouvir est un fichier .cub
 // le parsing doit check la map qui ce trouver dans les fichiers .cub
 // cas erreur possible :
 // si il a un cote ouver ERROR DE MAP
@@ -75,7 +75,6 @@ bool	check_file(char *filename)
  * coeur de parsing
  */
 
-
 bool	check_around_2(char **map, int i)
 {
 	int	j;
@@ -122,10 +121,8 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 			free_tab2(mlx->map.map);
 			free_extraction(&mlx->map);
 			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
-				STDERR_FILENO));
+					STDERR_FILENO));
 		}
-		free_tab2(mlx->map.map);
-		free_extraction(&mlx->map);
 		return (true);
 	}
 	else

@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 15:21:13 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:30:08 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ bool	check_map(t_map *map, char *filename)
 		if (!extract_data(map, line, i))
 		{
 			free_get_net_line(line, map->fd_file);
-			return (ft_putstr_fd("\033[1);31mError\nextract_data not success\
+			return (ft_putstr_fd("\033[1;31mError\nextract_data not success\
  !\033[0m\n", STDERR_FILENO));
 		}
 		line = get_next_line(map->fd_file);

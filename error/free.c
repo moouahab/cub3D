@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 09:39:08 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:35:54 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	free_map_lines(t_line *head)
 {
 	t_line	*current;
 	t_line	*next;
-	
+
 	current = head;
 	while (current != NULL)
 	{
@@ -33,17 +33,16 @@ void	free_map_lines(t_line *head)
 
 void	free_extraction(t_map *map)
 {
-    if (map->texture_north != NULL)
-	    free(map->texture_north);
+	if (map->texture_north != NULL)
+		free(map->texture_north);
 	if (map->texture_south != NULL)
-        free(map->texture_south);
+		free(map->texture_south);
 	if (map->texture_east != NULL)
-        free(map->texture_east);
+		free(map->texture_east);
 	if (map->texture_west != NULL)
-        free(map->texture_west);
+		free(map->texture_west);
 	if (map->line)
 		free_map_lines(map->line);
-
 }
 
 void	free_get_net_line(char *line, int fd_file)
@@ -56,15 +55,16 @@ void	free_get_net_line(char *line, int fd_file)
 	close(fd_file);
 }
 
-int	window_close(t_mlx	*data)
+int	window_close(t_mlx *data)
 {
 	exit_msg();
 	mlx_destroy_window(data->mlx_ptr, data->mlx_win);
 	mlx_destroy_image(data->mlx_ptr, data->img.img_ptr);
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
+	free_tab2(data->map.map);
 	free_extraction(&data->map);
-    close(data->map.fd_file);
+	close(data->map.fd_file);
 	exit(EXIT_SUCCESS);
 	return (1);
 }
