@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:07:54 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:17:22 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 11:55:12 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,6 @@ t_line	*create_new_node(char *line)
 	new_node = (t_line *)malloc(sizeof(t_line));
 	if (!new_node)
 		return (NULL);
-	if (!ft_strncmp(line, "\n", 1))
-		new_node->line = ft_strndup(line, ft_strlen(line));
 	else if (ft_strchr(line, '\n'))
 		new_node->line = ft_strndup(line, ft_strlen(line) - 1);
 	else

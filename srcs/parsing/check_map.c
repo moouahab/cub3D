@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:25:16 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:21:13 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,10 @@ bool	verify_map(t_map *map)
 	t_line	*current;
 
 	current = map->line;
-	map->map_height = size_map(map->line);
-	if (map->map_height < 3 || !map->map_height)
-		return (false);
-	map->map_width = size_max_line(map->line);
-	if (map->map_width < 3 || !map->map_width)
-		return (false);
 	map->map = list_to_array(current, map->map_height, map->map_width);
 	if (!map->map)
+		return (false);
+	if (!check_around_2(map->map, 0))
 		return (false);
 	return (true);
 }
@@ -92,6 +88,9 @@ bool	check_map(t_map *map, char *filename)
 		i++;
 	}
 	close(map->fd_file);
-	return (check_argument(map) && map->line_map > map->line_color
-		+ map->line_texture);
+	if (map->line_map < map->line_color + map->line_texture
+		|| !witdh_and_heigth_map(map))
+		return (ft_putstr_fd("\033[1;31mError\nmap is not correct!\033[0m\n",
+				STDERR_FILENO));
+	return (check_argument(map));
 }

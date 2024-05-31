@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:26:23 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 15:24:00 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,34 @@ bool	check_file(char *filename)
  */
 
 
+bool	check_around_2(char **map, int i)
+{
+	int	j;
+
+	while (map[i] && map[i + 1])
+	{
+		j = 0;
+		while (map[i][j] && map[i][j + 1] != '\0')
+		{
+			if (map[i][j] == ' ')
+			{
+				if ((map[i][j + 1] == '0') || (map[i + 1][j] && map[i + 1][j]
+						&& map[i + 1][j] == '0'))
+					return (false);
+				else
+					break ;
+			}
+			if (map[i][j] == '0')
+				if ((map[i][j + 1] == '2') || (map[i + 1] && map[i + 1][j]
+						&& map[i + 1][j] == ' '))
+					return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
+}
+
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
 	data_map_init(&mlx->map);
@@ -87,12 +115,12 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 		if (!check_map(&mlx->map, av[1]))
 		{
 			free_extraction(&mlx->map);
-			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
-				STDERR_FILENO));
+			return (false);
 		}
 		if (!verify_map(&mlx->map))
 		{
 			free_tab2(mlx->map.map);
+			free_extraction(&mlx->map);
 			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
 				STDERR_FILENO));
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 19:56:30 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/30 17:26:45 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 14:26:48 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strncpy(char	*dest, const char	*src, size_t n)
 	i = 0;
 	while (i < n && src[i] != '\0')
 	{
-		if (src[i] == '\n')
+		if (src[i] == '\n' || src[i] == '\t' || src[i] == ' ')
 			dest[i] = ' ';
 		else
 			dest[i] = src[i];
