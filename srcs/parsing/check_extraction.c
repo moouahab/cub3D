@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   check_extraction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 17:23:52 by moouahab         ###   ########.fr       */
+/*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
+/*   Updated: 2024/05/31 17:37:20 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ bool	verify_map(t_map *map)
 	return (true);
 }
 
-bool	check_map(t_map *map, char *filename)
+bool	check_extraction(t_map *map, char *filename)
 {
 	char	*line;
 	int		i;

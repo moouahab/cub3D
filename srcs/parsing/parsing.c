@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 17:23:07 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:36:36 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,10 @@ bool	check_file(char *filename)
  *
  * elle utilise check_file afin de pouvoire
  * connaitre si l'extension est correcte si
- * oui nous bouvont passer check_map elle recupere
+ * oui nous bouvont passer check_extraction elle recupere
  * et verifier l'interieur de du fichier c'est le
  * coeur de parsing
  */
-
-
 
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
@@ -85,7 +83,7 @@ bool	parsing(int ac, char **av, t_mlx *mlx)
 		if (!check_file(av[1]))
 			return (ft_putstr_fd("\033[1;31mError\nnot file\033[0m\n",
 					STDERR_FILENO));
-		if (!check_map(&mlx->map, av[1]))
+		if (!check_extraction(&mlx->map, av[1]))
 		{
 			free_extraction(&mlx->map);
 			return (false);

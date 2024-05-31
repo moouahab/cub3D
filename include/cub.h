@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 17:27:22 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:36:36 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ void				data_map_init(t_map *map);
 bool				check_line(char *line);
 bool				inside_map(char *line, t_map *map);
 bool				find_line_first_end_last_map(char *line);
-bool				check_map(t_map *map, char *filename);
+bool				check_extraction(t_map *map, char *filename);
 bool				parsing(int ac, char **av, t_mlx *mlx);
 
 // function utils
