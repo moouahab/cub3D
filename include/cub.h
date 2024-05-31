@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 15:19:12 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:27:22 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ typedef struct s_line
 
 typedef struct s_corrdone
 {
-	int				x;
-	int				y;
+	int				axe_ord;
+	int				axe_abs;
 }					t_corrdone;
 
 typedef struct s_player
@@ -133,5 +133,6 @@ bool				data_init(t_mlx *mlx);
 bool				add_map_line(t_line **head, char *line, t_map *m, int j);
 bool				witdh_and_heigth_map(t_map	*map);
 bool				check_around_2(char **map, int i);
+bool				check_double_player(char 	**str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:47:23 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 15:30:08 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:23:52 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ bool	verify_map(t_map *map)
 	if (!map->map)
 		return (false);
 	if (!check_around_2(map->map, 0))
+		return (false);
+	if (!check_double_player(map->map))
 		return (false);
 	return (true);
 }

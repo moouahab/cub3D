@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 16:06:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/05/31 17:23:07 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,33 +75,7 @@ bool	check_file(char *filename)
  * coeur de parsing
  */
 
-bool	check_around_2(char **map, int i)
-{
-	int	j;
 
-	while (map[i] && map[i + 1])
-	{
-		j = 0;
-		while (map[i][j] && map[i][j + 1] != '\0')
-		{
-			if (map[i][j] == ' ')
-			{
-				if ((map[i][j + 1] == '0') || (map[i + 1][j] && map[i + 1][j]
-						&& map[i + 1][j] == '0'))
-					return (false);
-				else
-					break ;
-			}
-			if (map[i][j] == '0')
-				if ((map[i][j + 1] == '2') || (map[i + 1] && map[i + 1][j]
-						&& map[i + 1][j] == ' '))
-					return (false);
-			j++;
-		}
-		i++;
-	}
-	return (true);
-}
 
 bool	parsing(int ac, char **av, t_mlx *mlx)
 {
