@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 21:50:05 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ typedef struct s_corrdone
 
 typedef struct s_camera
 {
-	double			planeX;
-	double			planeY;
+	double			planex;
+	double			planey;
 }					t_camera;
 
 typedef struct s_direction

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:09:33 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 22:31:49 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,16 @@ void	init_noth(t_player *player)
 {
 	player->direction.dir_x = -1;
 	player->direction.dir_y = 0;
-	player->camera.planeX = 0;
-	player->camera.planeY = 0.66;
+	player->camera.planex = 0;
+	player->camera.planey = 0.66;
 }
 
 void	init_east(t_player *player)
 {
 	player->direction.dir_x = 0;
 	player->direction.dir_y = 1;
-	player->camera.planeX = 0.66;
-	player->camera.planeY = 0;
+	player->camera.planex = 0.66;
+	player->camera.planey = 0;
 }
 
 void	init_player(t_player *player)
@@ -45,15 +45,15 @@ void	init_player(t_player *player)
 	{
 		player->direction.dir_x = 1;
 		player->direction.dir_y = 0;
-		player->camera.planeX = 0;
-		player->camera.planeY = -0.66;
+		player->camera.planex = 0;
+		player->camera.planey = -0.66;
 	}
 	else if (player->orientation == 'W')
 	{
 		player->direction.dir_x = 0;
 		player->direction.dir_y = -1;
-		player->camera.planeX = -0.66;
-		player->camera.planeY = 0;
+		player->camera.planex = -0.66;
+		player->camera.planey = 0;
 	}
 }
 

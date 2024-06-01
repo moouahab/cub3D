@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 21:46:55 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ void	print_map(char	**map)
 
 void	print_info(t_map *map)
 {
-	printf("\n\033[33m    INFORMATION DE LA MAP      \n");
-	printf("\n################################\033[0m\033[32m\n\n");
-	printf("Hauteur %d\n", map->map_height);
-	printf("Largeur %d\n\n", map->map_width);
-	print_map(map->map);
 	printf("\n\033[33m  INFORMATION DES TEXTURES  \n");
 	printf("\n################################\033[0m\033[36m\n\n");
 	printf("Nord %s\n", map->texture_north);
@@ -44,6 +39,15 @@ void	print_info(t_map *map)
 	printf("Orientation %c\n", map->player.orientation);
 	printf("Position X %.2f\n", map->player.corrdone.axe_abs);
 	printf("Position Y %.2f\n", map->player.corrdone.axe_ord);
+	printf("Direction X %.2f\n", map->player.direction.dir_x);
+	printf("Direction Y %.2f\n", map->player.direction.dir_y);
+	printf("Plane X %.2f\n", map->player.camera.planex);
+	printf("Plane Y %.2f\n", map->player.camera.planey);
+	printf("\n\033[33m    INFORMATION DE LA MAP      \n");
+	printf("\n################################\033[0m\033[32m\n\n");
+	printf("Hauteur %d\n", map->map_height);
+	printf("Largeur %d\n\n", map->map_width);
+	print_map(map->map);
 	printf("\033[0m");
 	
 }
