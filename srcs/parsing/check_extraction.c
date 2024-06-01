@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_extraction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 17:37:20 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 13:21:00 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,9 @@ bool	verify_map(t_map *map)
 		return (false);
 	if (!check_around_2(map->map, 0))
 		return (false);
-	if (!check_double_player(map->map))
+	if (!check_double_player(map->map, &map->player))
+		return (false);
+	if (!check_player(map->map, &map->player))
 		return (false);
 	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 17:36:36 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 13:50:48 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 # define WIDTH 1024
 # define HEIGHT 400
+# define TAB_SIZE 4
 
 typedef struct s_img
 {
@@ -121,7 +122,7 @@ bool				check_line(char *line);
 bool				inside_map(char *line, t_map *map);
 bool				find_line_first_end_last_map(char *line);
 bool				check_extraction(t_map *map, char *filename);
-bool				parsing(int ac, char **av, t_mlx *mlx);
+bool				parsing(int ac, char **av, char **env, t_mlx *mlx);
 
 // function utils
 size_t				size_map(t_line *line);
@@ -133,6 +134,7 @@ bool				data_init(t_mlx *mlx);
 bool				add_map_line(t_line **head, char *line, t_map *m, int j);
 bool				witdh_and_heigth_map(t_map	*map);
 bool				check_around_2(char **map, int i);
-bool				check_double_player(char 	**str);
+bool				check_double_player(char 	**str, t_player *player);
+bool				check_player(char **str, t_player *player);
 
 #endif
