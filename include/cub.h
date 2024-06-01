@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 21:43:01 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:50:05 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define WIDTH 1024
 # define HEIGHT 400
 # define TAB_SIZE 4
+# define MOVE_SPEED 0.05
+# define ROT_SPEED 0.03
 
 typedef struct s_img
 {

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:21:02 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 14:16:21 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 22:32:16 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,55 +72,6 @@ bool can_player_move(char **map, int i, int j)
 		return true;
 	}
 	return false;
-}
-
-static bool	is_player(const char strs[4], char *str, t_player	*player)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (str[i])
-	{
-		j = 0;
-		while (strs[j])
-		{
-			if (str[i] == strs[j])
-			{
-				player->corrdone.axe_ord = i;
-				player->orientation = str[i];
-				return (true);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (false);
-}
-
-bool	check_double_player(char	**str, t_player *player)
-{
-	int			i;
-	int			j;
-	const char	oriantation[4] = {'N', 'S', 'W', 'E'};
-
-	i = 0;
-	j = 0;
-	player->orientation = '\0';
-	player->corrdone.axe_ord = -1;
-	player->corrdone.axe_abs = -1;
-	while (str[i])
-	{
-		if (is_player(oriantation, str[i], player))
-		{	
-			player->corrdone.axe_abs = i;
-			j++;
-		}
-		i++;
-	}
-	if (j > 1)
-		return (false);
-	return (true);
 }
 
 bool check_player(char **str, t_player *player)
