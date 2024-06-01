@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 00:09:58 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/01 10:33:12 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 23:59:51 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 5
 # endif
-
-
 
 void	free_get_net_line(char *line, int fd_file);
 char	*get_next_line(int fd);
