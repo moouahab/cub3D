@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 14:26:04 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 21:46:55 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	print_info(t_map *map)
 	printf("\n\033[33m  INFORMATION DE LA PLAYER  \n");
 	printf("\n################################\033[0m\033[35m\n\n");
 	printf("Orientation %c\n", map->player.orientation);
-	printf("Position X %d\n", map->player.corrdone.axe_abs);
-	printf("Position Y %d\n", map->player.corrdone.axe_ord);
+	printf("Position X %.2f\n", map->player.corrdone.axe_abs);
+	printf("Position Y %.2f\n", map->player.corrdone.axe_ord);
 	printf("\033[0m");
 	
 }
@@ -55,7 +55,7 @@ int	main(int ac, char **av, char **env)
 
 	if (parsing(ac, av, env, &mlx))
 	{
-		// print_info(&mlx.map);
+		print_info(&mlx.map);
 		data_init(&mlx);
 		mlx_loop(mlx.mlx_ptr);
 		return (0);
