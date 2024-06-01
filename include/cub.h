@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 13:50:48 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:26:36 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
 
 // function extraction
-bool				verify_map(t_map *map);
+bool				verify_map(t_mlx *mlx, t_map *map);
 bool				extract_data(t_map *map, char *line, int y);
 bool				recovery_colors(char *line, t_map **map, int i);
 bool				extract_color(t_rgb *color, char *line, int i, char c);
@@ -127,6 +127,7 @@ bool				parsing(int ac, char **av, char **env, t_mlx *mlx);
 // function utils
 size_t				size_map(t_line *line);
 size_t				size_max_line(t_line *line);
+bool				check_texture_paths(t_mlx	*mlx, t_map *textures);
 char				**list_to_array(t_line *head, int height, int width);
 
 // function initializ

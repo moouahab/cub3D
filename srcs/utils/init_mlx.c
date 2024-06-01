@@ -3,14 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:45:37 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 10:55:53 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:29:26 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+bool	check_texture_paths(t_mlx	*mlx, t_map *textures)
+{
+    int		width;
+	int		height;
+    void	*img;
+
+    img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_north, &width, &height);
+    if (img == NULL)
+        return false;
+    mlx_destroy_image(mlx->mlx_ptr, img);
+    img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_south, &width, &height);
+    if (img == NULL)
+        return false;
+    mlx_destroy_image(mlx->mlx_ptr, img);
+    img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_east, &width, &height);
+    if (img == NULL)
+        return false;
+    mlx_destroy_image(mlx->mlx_ptr, img);
+    img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_west, &width, &height);
+    if (img == NULL)
+        return false;
+    mlx_destroy_image(mlx->mlx_ptr, img);
+    return true;
+}
 
 bool	data_init(t_mlx *mlx)
 {

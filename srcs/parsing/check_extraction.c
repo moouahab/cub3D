@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 13:21:00 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:30:51 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,9 @@ bool	check_argument(t_map *map)
 	return (true);
 }
 
-bool	verify_map(t_map *map)
+bool	verify_map(t_mlx	*mlx, t_map *map)
 {
+	(void)mlx;
 	t_line	*current;
 
 	current = map->line;
@@ -67,6 +68,8 @@ bool	verify_map(t_map *map)
 		return (false);
 	if (!check_player(map->map, &map->player))
 		return (false);
+	// if (!check_texture_paths(mlx, map))
+	//     return (false);
 	return (true);
 }
 

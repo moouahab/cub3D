@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:49:21 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 13:53:13 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/01 15:30:04 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ bool	parsing(int ac, char **av, char **env, t_mlx *mlx)
 					STDERR_FILENO));
 		if (!check_extraction(&mlx->map, av[1]))
 			return (free_extraction(&mlx->map), false);
-		if (!verify_map(&mlx->map))
+		if (!verify_map(mlx, &mlx->map))
 		{
 			free_tab2(mlx->map.map);
 			free_extraction(&mlx->map);
-			return (ft_putstr_fd("\033[1;31mError\nmap not valide\033[0m\n",
+			return (ft_putstr_fd("\033[1;31mError\nData is not valide\033[0m\n",
 					STDERR_FILENO));
 		}
 		return (true);
