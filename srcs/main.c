@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/02 01:18:32 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int ac, char **av, char **env)
 	{
 		print_info(&mlx.map);
 		data_init(&mlx);
+		mlx_put_image_to_window(mlx.mlx_ptr, mlx.mlx_win, mlx.img.img_ptr, 0, 0);
 		mlx_loop(mlx.mlx_ptr);
 		return (0);
 	}

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/02 11:24:53 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 
 # include "get_next_line.h"
 # include "libft.h"
-# include "parsing.h"
 # include "mlx.h"
+# include "parsing.h"
 # include <X11/X.h>
+# include <X11/ap_keysym.h>
 # include <X11/keysym.h>
 # include <math.h>
 
@@ -25,7 +26,15 @@
 # define HEIGHT 400
 # define TAB_SIZE 4
 # define MOVE_SPEED 0.05
-# define ROT_SPEED 0.03
+# define ROT_SPEED 0.3
+
+typedef struct	s_pixel
+{
+	int	color;
+	int	pixel_x;
+	int	pixel_y;
+}t_pixel;
+
 
 typedef struct s_img
 {
@@ -62,6 +71,13 @@ typedef struct s_camera
 	double			planey;
 }					t_camera;
 
+typedef struct s_coordinates
+{
+	int	local_x;
+	int	local_y;
+	int	rotated_x;
+	int	rotated_y;
+}		t_coordinates;
 typedef struct s_direction
 {
 	double			dir_x;
@@ -102,6 +118,7 @@ typedef struct s_mlx
 	void			*mlx_win;
 	void			*mlx_img;
 	int				mlx_addr;
+	t_pixel 		pixel;
 	t_map			map;
 	t_img			img;
 }					t_mlx;
@@ -112,6 +129,10 @@ bool				error_msg(char *msg, void *display);
 
 // hooks functions
 void				event_hook(t_mlx *data);
+void				turn_right(t_player *player);
+void				turn_left(t_player *player);
+void				move_backward(t_player *player, char **map);
+void				move_forward(t_player *player, char **map);
 
 // free functions
 void				free_tab2(char **tab);
@@ -119,6 +140,7 @@ void				free_map_lines(t_line *head);
 void				free_extraction(t_map *map);
 int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
-
+void				draw_player(t_mlx *mlx, t_player *player);
+void				draw_map(t_mlx *mlx);
 
 #endif
