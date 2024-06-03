@@ -3,84 +3,92 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:21:02 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 22:32:16 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:36:44 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+#include <stdbool.h>
+#include <stdio.h>
 
-bool	check_around_2(char **map, int i)
+bool	check_around_2(char **map, int i, int j)
 {
-	int	j;
-
 	while (map[i] && map[i + 1])
 	{
-		j = 0;
-		while (map[i][j] && map[i][j + 1] != '\0')
+		j = -1;
+		while (map[i][++j])
 		{
 			if (map[i][j] == ' ')
 			{
-				if ((map[i][j + 1] == '0') || (map[i + 1][j] && map[i + 1][j]
-						&& map[i + 1][j] == '0'))
+				if ((map[i][j + 1] && map[i][j + 1] == '0') || (map[i + 1][j]
+						&& map[i + 1][j] == '0') || (j > 0 && map[i][j - 1]
+						&& map[i][j - 1] == '0') || (i > 0 && map[i - 1][j]
+						&& map[i - 1][j] == '0'))
 					return (false);
-				else
-					break ;
 			}
-			if (map[i][j] == '0')
-				if ((map[i][j + 1] == ' ') || (map[i + 1] && map[i + 1][j]
-						&& map[i + 1][j] == ' '))
+			else if (map[i][j] == '0')
+			{
+				if ((map[i][j + 1] && map[i][j + 1] == ' ') || (map[i + 1][j]
+						&& map[i + 1][j] == ' ') || (j > 0 && map[i][j - 1]
+						&& map[i][j - 1] == ' ') || (i > 0 && map[i - 1][j]
+						&& map[i - 1][j] == ' '))
 					return (false);
-			j++;
+			}
 		}
 		i++;
 	}
 	return (true);
 }
 
-bool check_around_1(char **map, int i, int j)
+bool	check_around_1(char **map, int i, int j)
 {
 	if (i < 1 || j < 1 || map[i + 1] == NULL || map[i][j + 1] == '\0')
-		return false;
-	if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j - 1] == ' ' || map[i][j + 1] == ' ')
-		return false;
-	return true;
+		return (false);
+	if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j - 1] == ' '
+		|| map[i][j + 1] == ' ')
+		return (false);
+	return (true);
 }
 
-bool is_valid_position(char **map, int i, int j, int rows, int cols)
+bool	is_valid_position(char **map, int i, int j, t_col_row col)
 {
-	if (i < 0 || j < 0 || i >= rows || j >= cols)
-		return false;
-	return (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'W' || map[i][j] == 'E');
+	if (i < 0 || j < 0 || i >= col.row || j >= col.col)
+		return (false);
+	return (map[i][j] == '0' || map[i][j] == 'N' || map[i][j] == 'S'
+		|| map[i][j] == 'W' || map[i][j] == 'E');
 }
 
-bool can_player_move(char **map, int i, int j)
+bool	can_player_move(char **map, int i, int j)
 {
-	int rows = 0;
+	int			rows;
+	int			cols;
+	t_col_row	col;
+
+	rows = 0;
 	while (map[rows])
 		rows++;
-	int cols = strlen(map[0]);
-
-	// Check if the player is surrounded by valid positions (i.e., spaces where he can move)
-	if (is_valid_position(map, i - 1, j, rows, cols) ||
-	    is_valid_position(map, i + 1, j, rows, cols) ||
-	    is_valid_position(map, i, j - 1, rows, cols) ||
-	    is_valid_position(map, i, j + 1, rows, cols))
-	{
-		return true;
-	}
-	return false;
+	cols = ft_strlen(map[0]);
+	col.row = rows;
+	col.col = cols;
+	if (is_valid_position(map, i - 1, j, col) || is_valid_position(map, i + 1,
+			j, col) || is_valid_position(map, i, j - 1, col)
+		|| is_valid_position(map, i, j + 1, col))
+		return (true);
+	return (false);
 }
 
-bool check_player(char **str, t_player *player)
+bool	check_player(char **str, t_player *player)
 {
 	if (!check_double_player(str, player))
-		return false;
-	if (!check_around_1(str, player->corrdone.axe_abs, player->corrdone.axe_ord))
-		return false;
-	if (!can_player_move(str, player->corrdone.axe_abs, player->corrdone.axe_ord))
-		return false;
-	return true;
+		return (false);
+	if (!check_around_1(str, player->corrdone.axe_abs,
+			player->corrdone.axe_ord))
+		return (false);
+	if (!can_player_move(str, player->corrdone.axe_abs,
+			player->corrdone.axe_ord))
+		return (false);
+	return (true);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 23:42:49 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/02 13:45:20 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:23:55 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,36 @@ void	move_forward(t_player *player, char **map)
 		player->corrdone.axe_ord += player->direction.dir_y * MOVE_SPEED;
 }
 
+void	strafe_left(t_player *player, char **map)
+{
+	double	move_x;
+	double	move_y;
+
+	move_x = player->direction.dir_y * MOVE_SPEED;
+	move_y = -player->direction.dir_x * MOVE_SPEED;
+	if (map[(int)(player->corrdone.axe_abs
+			+ move_x)][(int)(player->corrdone.axe_ord)] == '0')
+		player->corrdone.axe_abs += move_x;
+	if (map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord
+			+ move_y)] == '0')
+		player->corrdone.axe_ord += move_y;
+}
+
+void	strafe_right(t_player *player, char **map)
+{
+	double	move_x;
+	double	move_y;
+
+	move_x = -player->direction.dir_y * MOVE_SPEED;
+	move_y = player->direction.dir_x * MOVE_SPEED;
+	if (map[(int)(player->corrdone.axe_abs
+			+ move_x)][(int)(player->corrdone.axe_ord)] == '0')
+		player->corrdone.axe_abs += move_x;
+	if (map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord
+			+ move_y)] == '0')
+		player->corrdone.axe_ord += move_y;
+}
+
 void	move_backward(t_player *player, char **map)
 {
 	if (map[(int)(player->corrdone.axe_abs - player->direction.dir_x
@@ -48,46 +78,4 @@ void	move_backward(t_player *player, char **map)
 	if (map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord
 			- player->direction.dir_y * MOVE_SPEED)] == '0')
 		player->corrdone.axe_ord -= player->direction.dir_y * MOVE_SPEED;
-}
-
-void	turn_left(t_player *player)
-{
-	double	oldDirx;
-	double	oldPlanex;
-	double	cosAngle;
-	double	sinAngle;
-
-	oldDirx = player->direction.dir_x;
-	oldPlanex = player->camera.planex;
-	cosAngle = cos(-ROT_SPEED);
-	sinAngle = sin(-ROT_SPEED);
-	player->direction.dir_x = oldDirx * cosAngle - player->direction.dir_y
-		* sinAngle;
-	player->direction.dir_y = oldDirx * sinAngle + player->direction.dir_y
-		* cosAngle;
-	player->camera.planex = oldPlanex * cosAngle - player->camera.planey
-		* sinAngle;
-	player->camera.planey = oldPlanex * sinAngle + player->camera.planey
-		* cosAngle;
-}
-
-void	turn_right(t_player *player)
-{
-	double	oldDirx;
-	double	oldPlanex;
-	double	cosAngle;
-	double	sinAngle;
-
-	oldDirx = player->direction.dir_x;
-	oldPlanex = player->camera.planex;
-	cosAngle = cos(ROT_SPEED);
-	sinAngle = sin(ROT_SPEED);
-	player->direction.dir_x = oldDirx * cosAngle - player->direction.dir_y
-		* sinAngle;
-	player->direction.dir_y = oldDirx * sinAngle + player->direction.dir_y
-		* cosAngle;
-	player->camera.planex = oldPlanex * cosAngle - player->camera.planey
-		* sinAngle;
-	player->camera.planey = oldPlanex * sinAngle + player->camera.planey
-		* cosAngle;
 }

@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:50:57 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:09:38 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:42:43 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,9 @@ bool	extract_data(t_map *map, char *line, int count_line)
 		return (false);
 	else if (ft_strchr(line, 'F') || ft_strchr(line, 'C'))
 		return (recovery_colors(line, &map, count_line));
-	else if (!check_line(line) || (inside_map(line, map) && !check_line(line)))
+	else if (inside_map(line, map) && !check_line_map(line))
+		return (false);
+	else if (!inside_map(line, map) && !check_line(line))
 		return (false);
 	else if (inside_map(line, map))
 		return (add_map_line(&map->line, line, map, count_line));

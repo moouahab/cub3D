@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/02 11:24:53 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:21:10 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,12 @@
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.3
 
-typedef struct	s_pixel
+typedef struct s_pixel
 {
-	int	color;
-	int	pixel_x;
-	int	pixel_y;
-}t_pixel;
-
+	int				color;
+	int				pixel_x;
+	int				pixel_y;
+}					t_pixel;
 
 typedef struct s_img
 {
@@ -73,11 +72,11 @@ typedef struct s_camera
 
 typedef struct s_coordinates
 {
-	int	local_x;
-	int	local_y;
-	int	rotated_x;
-	int	rotated_y;
-}		t_coordinates;
+	int				local_x;
+	int				local_y;
+	int				rotated_x;
+	int				rotated_y;
+}					t_coordinates;
 typedef struct s_direction
 {
 	double			dir_x;
@@ -118,7 +117,7 @@ typedef struct s_mlx
 	void			*mlx_win;
 	void			*mlx_img;
 	int				mlx_addr;
-	t_pixel 		pixel;
+	t_pixel			pixel;
 	t_map			map;
 	t_img			img;
 }					t_mlx;
@@ -142,5 +141,7 @@ int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
 void				draw_player(t_mlx *mlx, t_player *player);
 void				draw_map(t_mlx *mlx);
+void				strafe_left(t_player *player, char **map);
+void				strafe_right(t_player *player, char **map);
 
 #endif

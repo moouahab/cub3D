@@ -3,59 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:09:33 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 22:42:07 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:17:22 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-void	init_noth(t_player *player)
-{
-	player->direction.dir_x = -1;
-	player->direction.dir_y = 0;
-	player->camera.planex = 0;
-	player->camera.planey = 0.66;
-}
-
-void	init_east(t_player *player)
-{
-	player->direction.dir_x = 0;
-	player->direction.dir_y = 1;
-	player->camera.planex = 0.66;
-	player->camera.planey = 0;
-}
-
-void	init_player(t_player *player)
-{
-	int			i;
-	const char	character[2] = {'N', 'E'};
-
-	void (*f[2])(t_player *) = {init_noth, init_east};
-	i = -1;
-	while (++i < 2)
-		if (character[i] == player->orientation)
-		{
-			f[i](player);
-			break ;
-		}
-	if (player->orientation == 'S')
-	{
-		player->direction.dir_x = 1;
-		player->direction.dir_y = 0;
-		player->camera.planex = 0;
-		player->camera.planey = -0.66;
-	}
-	else if (player->orientation == 'W')
-	{
-		player->direction.dir_x = 0;
-		player->direction.dir_y = -1;
-		player->camera.planex = -0.66;
-		player->camera.planey = 0;
-	}
-}
 
 static bool	is_player(const char strs[4], char *str, t_player *player)
 {
@@ -83,9 +38,9 @@ static bool	is_player(const char strs[4], char *str, t_player *player)
 
 bool	check_double_player(char **str, t_player *player)
 {
-	int i;
-	int j;
-	const char oriantation[4] = {'N', 'S', 'W', 'E'};
+	int			i;
+	int			j;
+	const char	oriantation[4] = {'N', 'S', 'W', 'E'};
 
 	i = 0;
 	j = 0;

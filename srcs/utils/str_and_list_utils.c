@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   str_and_list_utils.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/30 16:38:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 13:11:32 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 15:15:33 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ static void	copy_with_tab_conversion(char *dest, const char *src, int width,
 	int	k;
 	int	space_count;
 
-	k = -1;
 	j = 0;
 	while (src[i] && j < width)
 	{
 		if (src[i] == '\t')
 		{
+			k = -1;
 			space_count = TAB_SIZE - (j % TAB_SIZE);
 			while (++k < space_count && j < width)
 				dest[j++] = ' ';

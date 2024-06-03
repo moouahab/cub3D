@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtok.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 09:53:47 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/29 09:55:32 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 14:27:19 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,23 @@ size_t	ft_strcspn(const char *str, const char *charset)
  */
 char	*ft_strtok(char *str, const char *delim)
 {
-	static char	*nextToken;
+	static char	*next_token;
 	char		*token_start;
 	int			pos;
 
 	if (str != NULL)
-		nextToken = str;
-	while (*nextToken && ft_strchr(delim, *nextToken))
-		nextToken++;
-	if (*nextToken == '\0')
+		next_token = str;
+	while (*next_token && ft_strchr(delim, *next_token))
+		next_token++;
+	if (*next_token == '\0')
 		return (NULL);
-	token_start = nextToken;
-	pos = ft_strcspn(nextToken, delim);
-	nextToken += pos;
-	if (*nextToken != '\0')
+	token_start = next_token;
+	pos = ft_strcspn(next_token, delim);
+	next_token += pos;
+	if (*next_token != '\0')
 	{
-		*nextToken = '\0';
-		nextToken++;
+		*next_token = '\0';
+		next_token++;
 	}
 	return (token_start);
 }

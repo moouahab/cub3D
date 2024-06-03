@@ -26,7 +26,7 @@ SRCS = srcs/main.c srcs/utils/check_player.c srcs/parsing/extract_map.c srcs/par
 SRCS += srcs/utils/init_mlx.c srcs/utils/hooks.c srcs/parsing/parsing.c srcs/parsing/init_map.c srcs/recasting/player_move.c
 SRCS += error/err_msg.c error/free.c srcs/parsing/check_extraction.c srcs/parsing/extract_color.c srcs/utils/init_player.c
 SRCS += libft/get_next_line.c libft/get_next_line_utils.c libft/ft_strtok.c srcs/utils/extract_map_utils.c srcs/recasting/mini_map.c
-SRCS += srcs/utils/draw_player.c
+SRCS += srcs/utils/draw_player.c srcs/recasting/player_turn.c srcs/utils/init_pos.c
 
 OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
 

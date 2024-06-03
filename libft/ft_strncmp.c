@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 22:04:01 by moouahab          #+#    #+#             */
-/*   Updated: 2024/04/27 18:18:55 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 13:26:57 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,5 @@ int	ft_strcmp(const char *s1, const char *s2)
 		s1++;
 		s2++;
 	}
-	return (int)((unsigned char)*s1 - (unsigned char)*s2);
+	return ((int)((unsigned char)*s1 - (unsigned char)*s2));
 }

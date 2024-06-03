@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 21:37:59 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/01 21:45:12 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:43:20 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+typedef struct s_col_row
+{
+	int					col;
+	int					row;
+}						t_col_row;
+
 typedef struct s_mlx	t_mlx;
 typedef struct s_map	t_map;
 typedef struct s_rgb	t_rgb;
@@ -25,6 +31,7 @@ typedef struct s_line	t_line;
 typedef struct s_player	t_player;
 
 // function extraction
+void					init_player(t_player *player);
 bool					verify_map(t_mlx *mlx, t_map *map);
 bool					extract_data(t_map *map, char *line, int y);
 bool					recovery_colors(char *line, t_map **map, int i);
@@ -53,8 +60,9 @@ bool					data_init(t_mlx *mlx);
 bool					add_map_line(t_line **head, char *line, t_map *m,
 							int j);
 bool					witdh_and_heigth_map(t_map *map);
-bool					check_around_2(char **map, int i);
+bool					check_around_2(char **map, int i, int j);
 bool					check_double_player(char **str, t_player *player);
 bool					check_player(char **str, t_player *player);
+bool					check_line_map(char *line);
 
 #endif

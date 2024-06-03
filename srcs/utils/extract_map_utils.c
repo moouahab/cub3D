@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:56:27 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:22:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/03 17:47:05 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ bool	find_line_first_end_last_map(char *line)
 	i = 0;
 	while (i < (int)ft_strlen(line) - 1)
 	{
-		if (line[i] == '1' || line[i] == ' ' ||  line[i] == '\t')
+		if (line[i] == '1' || line[i] == ' ' || line[i] == '\t')
 			inside_map = true;
 		else
 		{
@@ -60,6 +60,23 @@ bool	check_line(char *line)
 			ft_strlen(line)) || ft_strnstr(line, "SO", ft_strlen(line))
 		|| ft_strnstr(line, "WE", ft_strlen(line)))
 		return (true);
+	while (line[i] && i < (int)ft_strlen(line))
+	{
+		if (line[i] != '\n' && line[i] != '\t')
+		{
+			free(line);
+			return (false);
+		}
+		i++;
+	}
+	return (true);
+}
+
+bool	check_line_map(char *line)
+{
+	int	i;
+
+	i = 0;
 	while (line[i] && i < (int)ft_strlen(line))
 	{
 		if (line[i] != '0' && line[i] != '1' && line[i] != ' ' && line[i] != 'N'
