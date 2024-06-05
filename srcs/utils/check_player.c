@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:21:02 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 17:36:44 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 00:54:36 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,9 @@ bool	check_around_1(char **map, int i, int j)
 		return (false);
 	if (map[i - 1][j] == ' ' || map[i + 1][j] == ' ' || map[i][j - 1] == ' '
 		|| map[i][j + 1] == ' ')
+	{
 		return (false);
+	}
 	return (true);
 }
 

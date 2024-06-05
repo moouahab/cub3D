@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 22:07:54 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/31 11:55:12 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 00:52:06 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,20 @@ bool	add_map_line(t_line **head, char *line, t_map *line_map, int count)
 {
 	t_line		*new_node;
 	static int	i;
+	int			j;
 
 	if (!i)
 	{
 		i = 0;
 		line_map->line_map = count;
 	}
+	j = 0;
+	while (line[j++])
+        if (line[j] =='\t')
+		{
+			free(line);
+			return (false);
+		}
 	new_node = create_new_node(line);
 	if (!append_node_to_list(head, new_node))
 	{

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:14:47 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/05 16:57:12 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 00:45:44 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	init_ray(t_ray *ray, t_mlx *mlx, int x)
+void	init_ray(t_ray *ray, t_mlx *mlx, int x)
 {
 	ray->camera_x = 2 * x / (double)WIDTH - 1;
 	ray->ray_dir_x = mlx->map.player.direction.dir_x
@@ -26,7 +26,7 @@ static void	init_ray(t_ray *ray, t_mlx *mlx, int x)
 	ray->hit = 0;
 }
 
-static void	perform_dda(t_ray *ray, t_mlx *mlx)
+void	perform_dda(t_ray *ray, t_mlx *mlx)
 {
 	while (ray->hit == 0)
 	{
@@ -53,7 +53,7 @@ static void	perform_dda(t_ray *ray, t_mlx *mlx)
 				+ (1 - ray->step_y) / 2) / ray->ray_dir_y;
 }
 
-static void	calculate_step_and_side_dist(t_ray *ray, t_mlx *mlx)
+void	calculate_step_and_side_dist(t_ray *ray, t_mlx *mlx)
 {
 	if (ray->ray_dir_x < 0)
 	{
@@ -81,7 +81,7 @@ static void	calculate_step_and_side_dist(t_ray *ray, t_mlx *mlx)
 	}
 }
 
-static void	calculate_draw_limits(t_ray *ray)
+void	calculate_draw_limits(t_ray *ray)
 {
 	ray->line_height = (int)(HEIGHT / ray->perp_wall_dist);
 	ray->draw_start = -ray->line_height / 2 + HEIGHT / 2;
@@ -92,31 +92,70 @@ static void	calculate_draw_limits(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
+void	draw_ceiling(t_map *map, t_img *img)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			put_pixel_to_img(img, x, y,
+				map->color_ceiling.red << 16 | map->color_ceiling.green << 8 | map->color_ceiling.blue);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_sol(t_map *map, t_img *img)
+{
+	int	x;
+	int	y;
+
+	y = HEIGHT / 2;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			put_pixel_to_img(img, x, y,
+				map->color_sol.red << 16 | map->color_sol.green << 8 | map->color_sol.blue);
+			x++;
+		}
+		y++;
+	}
+}
+
 void	raycasting(t_mlx *mlx)
 {
-	int		x;
-	int		y;
-	int		color;
 	t_ray	ray;
+	int		color;
 
-	x = 0;
-	while (x < WIDTH)
+	int x, y;
+	draw_ceiling(&mlx->map, &mlx->img);
+	draw_sol(&mlx->map, &mlx->img);
+	for (x = 0; x < WIDTH; x++)
 	{
 		init_ray(&ray, mlx, x);
 		calculate_step_and_side_dist(&ray, mlx);
 		perform_dda(&ray, mlx);
 		calculate_draw_limits(&ray);
-		if (ray.side == 1)
-			color = 0x00FF00 / 2;
+		if (ray.side == 0 && ray.ray_dir_x > 0)
+			color = 0xFF0000; // Nord : Rouge
+		else if (ray.side == 0 && ray.ray_dir_x < 0)
+			color = 0x00FF00; // Sud : Vert
+		else if (ray.side == 1 && ray.ray_dir_y > 0)
+			color = 0x0000FF; // Est : Bleu
 		else
-			color = 0x000000;
-		y = ray.draw_start;
-		while (y < ray.draw_end)
+			color = 0xFFFF00; // Ouest : Jaune
+		for (y = ray.draw_start; y < ray.draw_end; y++)
 		{
 			put_pixel_to_img(&mlx->img, x, y, color);
-			y++;
 		}
-		x++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img.img_ptr, 0, 0);
 }
