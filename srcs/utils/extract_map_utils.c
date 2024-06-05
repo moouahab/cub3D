@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:56:27 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 17:47:05 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/05 12:00:48 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,24 +103,6 @@ size_t	size_map(t_line *line)
 	while (head)
 	{
 		size++;
-		head = head->next;
-	}
-	return (size);
-}
-
-size_t	size_max_line(t_line *line)
-{
-	t_line	*head;
-	size_t	size;
-
-	if (line == NULL)
-		return (-1);
-	size = 0;
-	head = line;
-	while (head)
-	{
-		if (size < head->line_len)
-			size = head->line_len;
 		head = head->next;
 	}
 	return (size);

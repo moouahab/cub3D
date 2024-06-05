@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 13:30:55 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:46:27 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,14 @@ void	print_info(t_map *map)
 	printf("\033[0m");
 }
 
+
+
+
+
+
+
+
+
 int	main(int ac, char **av, char **env)
 {
 	t_mlx	mlx;
@@ -60,7 +68,11 @@ int	main(int ac, char **av, char **env)
 	if (parsing(ac, av, env, &mlx))
 	{
 		print_info(&mlx.map);
-		data_init(&mlx);
+		if (!data_init(&mlx))
+		{
+			free_extraction(&mlx.map);
+			return (-1);
+		}
 		mlx_put_image_to_window(mlx.mlx_ptr, mlx.mlx_win, mlx.img.img_ptr, 0,
 			0);
 		mlx_loop(mlx.mlx_ptr);
