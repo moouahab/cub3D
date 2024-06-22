@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:36:50 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 17:11:04 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 00:44:43 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ void	draw_sol(t_map *map, t_img *img)
 // 		y++;
 // 	}
 // }
-
-
-
 
 static void	mapping(t_mlx *mlx, int i, int x, int y)
 {

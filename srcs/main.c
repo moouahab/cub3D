@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 16:12:49 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 00:22:38 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	main(int ac, char **av, char **env)
 		if (!data_init(&mlx))
 		{
 			free_tab2(mlx.map.map);
-			free_extraction(&mlx.map);
+			free_extraction(&mlx.map, true);
 			return (-1);
 		}
 		print_info(&mlx.map);	

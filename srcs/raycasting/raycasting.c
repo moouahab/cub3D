@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:14:47 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/11 15:18:50 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 01:27:58 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void	raycasting(t_mlx *mlx)
 		calculate_step_and_side_dist(&ray, mlx);
 		perform_dda(&ray, mlx);
 		calculate_draw_limits(&ray);
-		display_of_wall(&ray, x, mlx);
+		display_of_wall(&ray, x, mlx, ray.draw_start);
 		x++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img.img_ptr, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 17:12:45 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 01:27:41 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,13 +178,13 @@ void				raycasting(t_mlx *mlx);
 void				free_texture(t_map *map);
 void				free_tab2(char **tab);
 void				free_map_lines(t_line *head);
-void				free_extraction(t_map *map);
+void				free_extraction(t_map *map, bool is_free);
 int					window_close(t_mlx *data);
 int					free_window(int keysym, t_mlx *data);
 void				draw_player(t_mlx *mlx, t_player *player);
 void				draw_map(t_mlx *mlx);
 void				strafe_left(t_player *player, char **map);
-void				display_of_wall(t_ray *ray, int x, t_mlx *mlx);
+void				display_of_wall(t_ray *ray, int x, t_mlx *mlx, int count);
 void				strafe_right(t_player *player, char **map);
 
 #endif
