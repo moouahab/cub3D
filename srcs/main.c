@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 10:16:19 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:12:49 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,13 @@ int	main(int ac, char **av, char **env)
 
 	if (parsing(ac, av, env, &mlx))
 	{
-		print_info(&mlx.map);
 		if (!data_init(&mlx))
 		{
+			free_tab2(mlx.map.map);
 			free_extraction(&mlx.map);
 			return (-1);
 		}
+		print_info(&mlx.map);	
 		mlx_put_image_to_window(mlx.mlx_ptr, mlx.mlx_win, mlx.img.img_ptr, 0,
 			0);
 		mlx_loop(mlx.mlx_ptr);

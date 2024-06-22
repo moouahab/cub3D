@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 21:23:12 by moouahab          #+#    #+#             */
-/*   Updated: 2024/05/30 15:02:53 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:32:56 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int					ft_isdigit(int c);
 int					ft_isalnum(int c);
 int					ft_isascii(int c);
 int					ft_isprint(int c);
+char				*ft_strnchr(const char	*s, int c, int n);
 char				*ft_strndup(char *s, int len);
 void				ft_putchar_fd(char c, int fd);
 bool				ft_putstr_fd(char *str, int fd);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_extraction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 19:06:28 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:38:11 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ bool	check_argument(t_map *map)
 		return (ft_putstr_fd("\033[1;31mError\nextract_data not success!\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_south))
-		return (ft_putstr_fd("\033[1;31mError\nnot argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nnot argument valid 1\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_west, map->texture_east))
-		return (ft_putstr_fd("\033[1;31mError\nnot argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nnot argument valid 2\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_south, map->texture_east))
-		return (ft_putstr_fd("\033[1;31mError\nnot argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nnot argument valid 3\033[0m\n",
 				STDERR_FILENO));
 	if (!ft_strcmp(map->texture_north, map->texture_west))
-		return (ft_putstr_fd("\033[1;31mError\nnot argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nnot argument valid 4\033[0m\n",
 				STDERR_FILENO));
 	if (!is_init_color(map))
-		return (ft_putstr_fd("\033[1;31mError\nnot argument valid\033[0m\n",
+		return (ft_putstr_fd("\033[1;31mError\nnot argument valid 5\033[0m\n",
 				STDERR_FILENO));
 	if (map->beggin_map == false)
 		return (ft_putstr_fd("\033[1;31mError\nmap not find\033[0m\n",
@@ -70,8 +70,6 @@ bool	verify_map(t_mlx *mlx, t_map *map)
 		return (false);
 	if (!check_player(map->map, &map->player))
 		return (false);
-	// if (!check_texture_paths(mlx, map))
-	// 	return (false);
 	return (true);
 }
 

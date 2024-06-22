@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_mlx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 13:45:37 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 13:47:53 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:16:27 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ bool	check_texture_paths(t_mlx *mlx, t_map *textures)
 
 	img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_north, &width,
 			&height);
-	if (img == NULL)
+	if (img == NULL || !img)
 		return (false);
 	mlx_destroy_image(mlx->mlx_ptr, img);
 	img = mlx_xpm_file_to_image(mlx->mlx_ptr, textures->texture_south, &width,
@@ -46,6 +46,8 @@ bool	data_init(t_mlx *mlx)
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
 		return (error_msg("Error mlx_int", mlx->mlx_ptr));
+	if (!check_texture_paths(mlx, &mlx->map))
+		return (error_msg("texture is not correcte", mlx->mlx_ptr));
 	mlx->mlx_win = mlx_new_window(mlx->mlx_ptr, WIDTH, HEIGHT, "CUB3D");
 	if (!mlx->mlx_win)
 		return (error_msg("Error window", mlx->mlx_ptr));

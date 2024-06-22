@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 14:25:08 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 16:05:42 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,23 @@ void	free_map_lines(t_line *head)
 	}
 }
 
+
+void    free_texture(t_map *map)
+{
+	if (map->texture_north != NULL && map->texture_north)
+		free(map->texture_north);
+	if (map->texture_south != NULL && map->texture_south)
+		free(map->texture_south);
+	if (map->texture_east != NULL && map->texture_east)
+		free(map->texture_east);
+	if (map->texture_west != NULL && map->texture_west)
+		free(map->texture_west);
+}
+
+
 void	free_extraction(t_map *map)
 {
-	if (map->texture_north != NULL)
-		free(map->texture_north);
-	if (map->texture_south != NULL)
-		free(map->texture_south);
-	if (map->texture_east != NULL)
-		free(map->texture_east);
-	if (map->texture_west != NULL)
-		free(map->texture_west);
+	free_texture(map);
 	if (map->line)
 		free_map_lines(map->line);
 }

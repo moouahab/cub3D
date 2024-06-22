@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/11 16:22:42 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 15:59:19 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ void				draw_sol(t_map *map, t_img *img);
 void				raycasting(t_mlx *mlx);
 
 // free functions
+void				free_texture(t_map *map);
 void				free_tab2(char **tab);
 void				free_map_lines(t_line *head);
 void				free_extraction(t_map *map);

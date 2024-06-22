@@ -1,10 +1,10 @@
-NO ./path_to_the_north_texture
-WE ./path_to_the_west_texture
-EA ./path_to_the_east_texture
-SO ./path_to_the_south_texture
+NO  asset/image/1337462.xpm
+WE  asset/image/Dual_Forces_of_Fire_and_Thunder.xpm
+EA  asset/image/images.xpm
+SO  asset/image/naruto.xpm
 
 F 0,04,0
-C 255,20, 220
+C 254,20,220
 
         1111111111111111111111111
         110000000011000000000S001
