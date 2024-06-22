@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 21:37:59 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 17:43:20 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:06:28 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ bool					data_init(t_mlx *mlx);
 bool					add_map_line(t_line **head, char *line, t_map *m,
 							int j);
 bool					witdh_and_heigth_map(t_map *map);
-bool					check_around_2(char **map, int i, int j);
+bool					is_open_map(char **map, int i, int j);
 bool					check_double_player(char **str, t_player *player);
 bool					check_player(char **str, t_player *player);
 bool					check_line_map(char *line);

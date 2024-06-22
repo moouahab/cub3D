@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:14:47 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 00:45:44 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/11 15:18:50 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,70 +92,22 @@ void	calculate_draw_limits(t_ray *ray)
 		ray->draw_end = HEIGHT - 1;
 }
 
-void	draw_ceiling(t_map *map, t_img *img)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < HEIGHT / 2)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			put_pixel_to_img(img, x, y,
-				map->color_ceiling.red << 16 | map->color_ceiling.green << 8 | map->color_ceiling.blue);
-			x++;
-		}
-		y++;
-	}
-}
-
-void	draw_sol(t_map *map, t_img *img)
-{
-	int	x;
-	int	y;
-
-	y = HEIGHT / 2;
-	while (y < HEIGHT)
-	{
-		x = 0;
-		while (x < WIDTH)
-		{
-			put_pixel_to_img(img, x, y,
-				map->color_sol.red << 16 | map->color_sol.green << 8 | map->color_sol.blue);
-			x++;
-		}
-		y++;
-	}
-}
-
 void	raycasting(t_mlx *mlx)
 {
+	int		x;
 	t_ray	ray;
-	int		color;
 
-	int x, y;
 	draw_ceiling(&mlx->map, &mlx->img);
 	draw_sol(&mlx->map, &mlx->img);
-	for (x = 0; x < WIDTH; x++)
+	x = 0;
+	while (x < WIDTH)
 	{
 		init_ray(&ray, mlx, x);
 		calculate_step_and_side_dist(&ray, mlx);
 		perform_dda(&ray, mlx);
 		calculate_draw_limits(&ray);
-		if (ray.side == 0 && ray.ray_dir_x > 0)
-			color = 0xFF0000; // Nord : Rouge
-		else if (ray.side == 0 && ray.ray_dir_x < 0)
-			color = 0x00FF00; // Sud : Vert
-		else if (ray.side == 1 && ray.ray_dir_y > 0)
-			color = 0x0000FF; // Est : Bleu
-		else
-			color = 0xFFFF00; // Ouest : Jaune
-		for (y = ray.draw_start; y < ray.draw_end; y++)
-		{
-			put_pixel_to_img(&mlx->img, x, y, color);
-		}
+		display_of_wall(&ray, x, mlx);
+		x++;
 	}
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->mlx_win, mlx->img.img_ptr, 0, 0);
 }

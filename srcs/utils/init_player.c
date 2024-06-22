@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:09:33 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 14:17:22 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:59:58 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ bool	check_double_player(char **str, t_player *player)
 		i++;
 	}
 	init_player(player);
+	player->corrdone.axe_ord = player->corrdone.axe_ord + 0.5;
+	player->corrdone.axe_abs = player->corrdone.axe_abs + 0.5;
 	if (j > 1)
 		return (false);
 	return (true);

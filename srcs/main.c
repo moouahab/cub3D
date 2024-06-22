@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 01:28:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/05 16:46:27 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:16:19 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,6 @@ void	print_info(t_map *map)
 	print_map(map->map);
 	printf("\033[0m");
 }
-
-
-
-
-
-
-
-
 
 int	main(int ac, char **av, char **env)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_player.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:21:02 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 00:54:36 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:06:28 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 
-bool	check_around_2(char **map, int i, int j)
+bool	is_open_map(char **map, int i, int j)
 {
 	while (map[i] && map[i + 1])
 	{

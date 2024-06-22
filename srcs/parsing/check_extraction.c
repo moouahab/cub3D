@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_extraction.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 00:53:58 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 19:06:28 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,10 @@ bool	verify_map(t_mlx *mlx, t_map *map)
 	{
 		return (false);
 	}
-	if (!check_around_2(map->map, 0, -1))
+	if (!is_open_map(map->map, 0, -1))
 		return (false);
 	if (!check_double_player(map->map, &map->player))
 		return (false);
-
 	if (!check_player(map->map, &map->player))
 		return (false);
 	// if (!check_texture_paths(mlx, map))

@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/05 16:47:36 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/11 16:22:42 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <math.h>
 
 # define WIDTH 1024
-# define HEIGHT 400
+# define HEIGHT 800
 # define TAB_SIZE 4
 # define MOVE_SPEED 0.05
 # define ROT_SPEED 0.3
@@ -154,6 +154,8 @@ void				turn_right(t_player *player);
 void				turn_left(t_player *player);
 void				move_backward(t_player *player, char **map);
 void				move_forward(t_player *player, char **map);
+void				draw_ceiling(t_map *map, t_img *img);
+void				draw_sol(t_map *map, t_img *img);
 void				raycasting(t_mlx *mlx);
 
 // free functions
@@ -165,6 +167,7 @@ int					free_window(int keysym, t_mlx *data);
 void				draw_player(t_mlx *mlx, t_player *player);
 void				draw_map(t_mlx *mlx);
 void				strafe_left(t_player *player, char **map);
+void				display_of_wall(t_ray *ray, int x, t_mlx *mlx);
 void				strafe_right(t_player *player, char **map);
 
 #endif

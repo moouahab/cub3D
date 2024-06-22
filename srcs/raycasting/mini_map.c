@@ -6,11 +6,70 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:36:50 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/03 14:17:34 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:57:45 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	draw_ceiling(t_map *map, t_img *img)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			put_pixel_to_img(img, x, y, map->color_ceiling.red << 16 \
+			| map->color_ceiling.green << 8 | map->color_ceiling.blue);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	draw_sol(t_map *map, t_img *img)
+{
+	int	x;
+	int	y;
+
+	y = HEIGHT / 2;
+	while (y < HEIGHT)
+	{
+		x = 0;
+		while (x < WIDTH)
+		{
+			put_pixel_to_img(img, x, y, map->color_sol.red << 16 \
+			| map->color_sol.green << 8 | map->color_sol.blue);
+			x++;
+		}
+		y++;
+	}
+}
+
+void	display_of_wall(t_ray *ray, int x, t_mlx *mlx)
+{
+	int	color;
+	int	y;
+
+	y = ray->draw_start;
+	if (ray->side == 0 && ray->ray_dir_x > 0)
+		color = 0xFF0000;
+	else if (ray->side == 0 && ray->ray_dir_x < 0)
+		color = 0x00FF00;
+	else if (ray->side == 1 && ray->ray_dir_y > 0)
+		color = 0x0000FF;
+	else
+		color = 0xFFFF00;
+	while (y < ray->draw_end)
+	{
+		put_pixel_to_img(&mlx->img, x, y, color);
+		y++;
+	}
+}
 
 static void	mapping(t_mlx *mlx, int i, int x, int y)
 {

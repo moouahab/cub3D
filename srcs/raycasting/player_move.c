@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_move.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 23:42:49 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 00:23:25 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/06 10:20:44 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,16 @@
 void	move_forward(t_player *player, char **map)
 {
 	if (map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'W'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'N'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'S'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'E')
+		map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord)] \
+	= '0';
+	if (map[(int)(player->corrdone.axe_abs + player->direction.dir_x
 			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == '0')
 		player->corrdone.axe_abs += player->direction.dir_x * MOVE_SPEED;
 	if (map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord
@@ -47,6 +57,16 @@ void	strafe_left(t_player *player, char **map)
 
 	move_x = player->direction.dir_y * MOVE_SPEED;
 	move_y = -player->direction.dir_x * MOVE_SPEED;
+	if (map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'W'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'N'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'S'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'E')
+		map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord)] \
+	= '0';
 	if (map[(int)(player->corrdone.axe_abs
 			+ move_x)][(int)(player->corrdone.axe_ord)] == '0')
 		player->corrdone.axe_abs += move_x;
@@ -62,6 +82,16 @@ void	strafe_right(t_player *player, char **map)
 
 	move_x = -player->direction.dir_y * MOVE_SPEED;
 	move_y = player->direction.dir_x * MOVE_SPEED;
+	if (map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'W'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'N'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'S'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'E')
+		map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord)] \
+	= '0';
 	if (map[(int)(player->corrdone.axe_abs
 			+ move_x)][(int)(player->corrdone.axe_ord)] == '0')
 		player->corrdone.axe_abs += move_x;
@@ -72,6 +102,16 @@ void	strafe_right(t_player *player, char **map)
 
 void	move_backward(t_player *player, char **map)
 {
+	if (map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'W'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'N'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'S'
+		|| map[(int)(player->corrdone.axe_abs + player->direction.dir_x
+			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == 'E')
+		map[(int)(player->corrdone.axe_abs)][(int)(player->corrdone.axe_ord)] \
+	= '0';
 	if (map[(int)(player->corrdone.axe_abs - player->direction.dir_x
 			* MOVE_SPEED)][(int)(player->corrdone.axe_ord)] == '0')
 		player->corrdone.axe_abs -= player->direction.dir_x * MOVE_SPEED;
