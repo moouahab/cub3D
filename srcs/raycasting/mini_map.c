@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:36:50 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 14:57:45 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 17:11:04 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,26 +50,29 @@ void	draw_sol(t_map *map, t_img *img)
 	}
 }
 
-void	display_of_wall(t_ray *ray, int x, t_mlx *mlx)
-{
-	int	color;
-	int	y;
+// void	display_of_wall(t_ray *ray, int x, t_mlx *mlx)
+// {
+// 	int	color;
+// 	int	y;
 
-	y = ray->draw_start;
-	if (ray->side == 0 && ray->ray_dir_x > 0)
-		color = 0xFF0000;
-	else if (ray->side == 0 && ray->ray_dir_x < 0)
-		color = 0x00FF00;
-	else if (ray->side == 1 && ray->ray_dir_y > 0)
-		color = 0x0000FF;
-	else
-		color = 0xFFFF00;
-	while (y < ray->draw_end)
-	{
-		put_pixel_to_img(&mlx->img, x, y, color);
-		y++;
-	}
-}
+// 	y = ray->draw_start;
+// 	if (ray->side == 0 && ray->ray_dir_x > 0)
+// 		color = 0xFF0000;
+// 	else if (ray->side == 0 && ray->ray_dir_x < 0)
+// 		color = 0x00FF00;
+// 	else if (ray->side == 1 && ray->ray_dir_y > 0)
+// 		color = 0x0000FF;
+// 	else
+// 		color = 0xFFFF00;
+// 	while (y < ray->draw_end)
+// 	{
+// 		put_pixel_to_img(&mlx->img, x, y, color);
+// 		y++;
+// 	}
+// }
+
+
+
 
 static void	mapping(t_mlx *mlx, int i, int x, int y)
 {

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 15:59:19 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/22 17:12:45 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,17 @@ typedef struct s_pixel
 	int				pixel_x;
 	int				pixel_y;
 }					t_pixel;
+
+typedef struct s_texture
+{
+	void			*img;
+	int				*data;
+	int				width;
+	int				height;
+	int				bpp;
+	int				size_line;
+	int				endian;
+}					t_texture;
 
 typedef struct s_img
 {
@@ -141,6 +152,10 @@ typedef struct s_mlx
 	t_pixel			pixel;
 	t_map			map;
 	t_img			img;
+	t_texture		texture_north;
+	t_texture		texture_south;
+	t_texture		texture_west;
+	t_texture		texture_east;
 }					t_mlx;
 
 // function de msg
@@ -149,6 +164,7 @@ bool				error_msg(char *msg, void *display);
 
 // hooks functions
 void				event_hook(t_mlx *data);
+void				init_textures(t_mlx *mlx);
 void				put_pixel_to_img(t_img *img, int x, int y, int color);
 void				turn_right(t_player *player);
 void				turn_left(t_player *player);
