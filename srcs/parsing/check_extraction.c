@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/31 17:37:07 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 15:38:11 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 11:26:31 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ bool	verify_map(t_mlx *mlx, t_map *map)
 	current = map->line;
 	map->map = list_to_array(current, map->map_height, map->map_width);
 	if (!map->map)
-	{
 		return (false);
-	}
 	if (!is_open_map(map->map, 0, -1))
 		return (false);
 	if (!check_double_player(map->map, &map->player))

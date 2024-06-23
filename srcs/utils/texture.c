@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:59:26 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 01:27:18 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:30:50 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ void	load_texture(t_mlx *mlx, t_texture *texture, char *path)
 			&texture->height);
 	if (!texture->img)
 	{
-		fprintf(stderr, "Error loading texture: %s\n", path);
+		printf("Error loading texture: %s\n", path);
 		exit(EXIT_FAILURE);
 	}
 	texture->data = (int *)mlx_get_data_addr(texture->img, &texture->bpp,
 			&texture->size_line, &texture->endian);
 	if (!texture->data)
 	{
-		fprintf(stderr, "Error getting texture data: %s\n", path);
+		printf("Error getting texture data: %s\n", path);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -49,7 +49,6 @@ int	calculate_texture_x(t_ray *ray, t_texture *texture)
 	else
 		wall_x = ray->map_x + ray->perp_wall_dist * ray->ray_dir_x;
 	wall_x -= floor(wall_x);
-	// Calculer la coordonnée x de la texture
 	tex_x = (int)(wall_x * (double)texture->width);
 	if (ray->side == 0 && ray->ray_dir_x > 0)
 		tex_x = texture->width - tex_x - 1;

@@ -6,42 +6,45 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 15:45:49 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:21:05 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool 	count_color(char	*tmp)
+bool	count_color(char *tmp)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	j = 0;
+	if (tmp[0] != 'F' && tmp[0] != 'C')
+		return (true);
 	while (tmp[i])
 	{
-        if (tmp[i] == ',')
-            j++;
-        i++;
-    }
+		if (tmp[i] == ',')
+			j++;
+		else if (tmp[i] != '\n' && !(tmp[i] >= '0' && tmp[i] <= '9')
+			&& (!((tmp[i] > 8 && tmp[i] < 14) || tmp[i] == ' ')))
+			return (false);
+		i++;
+	}
 	if (j >= 3)
 	{
 		return (false);
 	}
 	else
-	    return (true);
+		return (true);
 }
 
 bool	init_color(t_rgb **color, int i, char *tmp)
 {
 	char	*rgb;
 
-	if (!count_color(tmp))
-		return (free(tmp), false);
 	rgb = ft_strtok(tmp, ",");
 	if (rgb == NULL)
-	    return (free(tmp), false);
+		return (free(tmp), false);
 	while (rgb != NULL && i <= 3)
 	{
 		if (i == 0)
@@ -62,6 +65,8 @@ bool	extract_color(t_rgb *color, char *line, int i, char c)
 	const int	len = ft_strlen(line) - find_path(line);
 	const int	start = find_path(line);
 
+	if (!count_color(line))
+		return (free(line), false);
 	while (line[i])
 	{
 		if (line[i] == c)
@@ -77,15 +82,15 @@ bool	extract_color(t_rgb *color, char *line, int i, char c)
 
 bool	recovery_colors(char *line, t_map **map, int i)
 {
-	static int y;
+	static int	y;
 
 	if (ft_strchr(line, 'F'))
 	{
 		if (!y)
 			y = 0;
 		if ((!((*map)->color_sol.blue < 0) || !((*map)->color_sol.green < 0)
-			|| !((*map)->color_sol.red < 0)) && y > 2)
-				return (free(line), false);
+				|| !((*map)->color_sol.red < 0)) && y > 2)
+			return (free(line), false);
 		(*map)->line_color = i;
 		return (y++, extract_color(&(*map)->color_sol, line, 0, 'F'));
 	}
@@ -94,8 +99,8 @@ bool	recovery_colors(char *line, t_map **map, int i)
 		if (!y)
 			y = 0;
 		if ((!((*map)->color_ceiling.blue < 0)
-			|| !((*map)->color_ceiling.green < 0)
-			|| !((*map)->color_ceiling.red < 0)) && y > 2)
+				|| !((*map)->color_ceiling.green < 0)
+				|| !((*map)->color_ceiling.red < 0)) && y > 2)
 			return (free(line), false);
 		(*map)->line_color = i;
 		return (y++, extract_color(&(*map)->color_ceiling, line, 0, 'C'));
@@ -105,11 +110,10 @@ bool	recovery_colors(char *line, t_map **map, int i)
 
 bool	is_init_color(t_map *map)
 {
-	
 	if (map->color_sol.blue < 0 || map->color_sol.red < 0
 		|| map->color_sol.green < 0 || map->color_ceiling.blue > 255
 		|| map->color_ceiling.red > 255 || map->color_ceiling.green > 255)
-			return (false);
+		return (false);
 	if (map->color_ceiling.blue < 0 || map->color_ceiling.red < 0
 		|| map->color_ceiling.green < 0 || map->color_ceiling.blue > 255
 		|| map->color_ceiling.red > 255 || map->color_ceiling.green > 255)

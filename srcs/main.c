@@ -26,16 +26,6 @@ void	print_map(char **map)
 
 void	print_info(t_map *map)
 {
-	printf("\n\033[33m  INFORMATION DES TEXTURES  \n");
-	printf("\n################################\033[0m\033[36m\n\n");
-	printf("Nord %s\n", map->texture_north);
-	printf("Sud %s\n", map->texture_south);
-	printf("Ouest %s\n", map->texture_west);
-	printf("Est %s\n", map->texture_east);
-	printf("color ceiling %d\n", map->color_ceiling.blue
-		+ map->color_ceiling.green + map->color_ceiling.red);
-	printf("color sol %d\n", map->color_sol.blue + map->color_sol.green
-		+ map->color_sol.red);
 	printf("\n\033[33m  INFORMATION DE LA PLAYER  \n");
 	printf("\n################################\033[0m\033[35m\n\n");
 	printf("Orientation %c\n", map->player.orientation);

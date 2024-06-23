@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 22:19:37 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/22 15:32:29 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:21:40 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,19 @@ char	*ft_strchr(const char	*s, int c)
 	return (NULL);
 }
 
-char	*ft_strnchr(const char	*s, int c, int n)
+char	*ft_strnchr(const char *s, int c, int n)
 {
-	int    i;
+	int	i;
 
 	i = 0;
-	while (i < n)
+	while (i < n && *s != '\0')
 	{
 		if (*s == (char)c)
 			return ((char *)s);
 		s++;
 		i++;
 	}
-	if ((char)c == '\0')
+	if (c == '\0' && i < n)
 		return ((char *)s);
 	return (NULL);
 }
