@@ -3,14 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:09:33 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/06 18:59:58 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 14:49:57 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static bool	check_player_line(char *line)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (line[i])
+	{
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
+            j++;
+        i++;
+	}
+	if (j == 1)
+	    return (true);
+	else
+	    return (false);
+}
+
 
 static bool	is_player(const char strs[4], char *str, t_player *player)
 {
@@ -18,6 +38,8 @@ static bool	is_player(const char strs[4], char *str, t_player *player)
 	int	j;
 
 	i = 0;
+	if (!check_player_line(str))
+		return (false);
 	while (str[i])
 	{
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 16:14:47 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 01:27:58 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/23 12:42:48 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,61 @@ void	calculate_draw_limits(t_ray *ray)
 	if (ray->draw_end >= HEIGHT)
 		ray->draw_end = HEIGHT - 1;
 }
+/*
+ * Fonction principale de raycasting, itère sur chaque colonne de l'écran.
 
+	* Le raycasting est une technique utilisée pour tracer un rayon depuis le
+	 point de vue de l'observateur
+ * et déterminer où ce rayon intersecte un objet dans l'environnement (ici,
+	les murs d'un labyrinthe).
+
+	* L'objectif est de calculer la distance à ces intersections et de 
+	les utiliser pour rendre une vue 3D de l'environnement.
+ *
+ * Étapes du raycasting :
+ *
+ * 1. Initialisation :
+ *    - Pour chaque colonne de l'écran,
+	nous initialisons un rayon correspondant à cette colonne.
+ *   
+	- La position du rayon sur le plan de la caméra est calculée pour 
+	déterminer sa direction.
+ *   
+	- La direction du rayon est déterminée par la direction actuelle du joueur 
+	et son plan de caméra.
+ *
+ * 2. Calcul des étapes et des distances initiales :
+ *   
+	- Nous déterminons dans quelle direction le rayon se déplace sur la carte (X ou Y).
+ *   
+	- Les distances initiales à parcourir dans chaque direction sont calculées en 
+	fonction de la position actuelle du joueur.
+ *
+ * 3. Exécution de l'algorithme DDA (Digital Differential Analyzer) :
+ *    - Cet algorithme permet de déterminer où le rayon intersecte un mur.
+ *    - En fonction de la direction la plus proche (X ou Y),
+	nous déplaçons le rayon d'une étape à la fois.
+ *    - Lorsqu'un mur est touché,
+	nous arrêtons l'algorithme et calculons la distance perpendiculaire au mur.
+ *
+ * 4. Calcul des limites de dessin :
+ *   
+	- La hauteur de la ligne à dessiner est calculée en fonction 
+	de la distance perpendiculaire au mur.
+ *   
+	- Les points de départ et de fin du dessin sont déterminés 
+	pour chaque colonne de l'écran.
+ *
+ * 5. Affichage du mur :
+ *   
+	- Le mur est dessiné colonne par colonne en fonction des limites calculées.
+ *    - Une fois toutes les colonnes dessinées,
+	l'image finale est affichée à l'écran.
+ *
+
+	* Cette méthode permet de créer une vue 3D d'un environnement en 2D
+	 (comme un labyrinthe) en utilisant une perspective réaliste.
+ */
 void	raycasting(t_mlx *mlx)
 {
 	int		x;
