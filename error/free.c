@@ -3,67 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/28 11:36:36 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 00:28:16 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 16:50:18 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-/**
- * Libère toute la mémoire utilisée par la liste chaînée de lignes de la carte.
- * @param head La tête de la liste chaînée.
- */
-void	free_map_lines(t_line *head)
+void	free_texture_img(t_mlx *mlx, t_texture *texture)
 {
-	t_line	*current;
-	t_line	*next;
-
-	current = head;
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current->line);
-		free(current);
-		current = next;
-	}
+	if (texture->img)
+		mlx_destroy_image(mlx->mlx_ptr, texture->img);
 }
 
-void free_texture_img(t_mlx *mlx, t_texture *texture)
+void	free_textures_img(t_mlx *mlx)
 {
-    if (texture->img)
-        mlx_destroy_image(mlx->mlx_ptr, texture->img);
-}
-
-void free_textures_img(t_mlx *mlx)
-{
-    free_texture_img(mlx, &mlx->texture_north);
-    free_texture_img(mlx, &mlx->texture_south);
-    free_texture_img(mlx, &mlx->texture_west);
-    free_texture_img(mlx, &mlx->texture_east);
-}
-
-void    free_texture(t_map *map)
-{
-	if (map->texture_north != NULL && map->texture_north)
-		free(map->texture_north);
-	if (map->texture_south != NULL && map->texture_south)
-		free(map->texture_south);
-	if (map->texture_east != NULL && map->texture_east)
-		free(map->texture_east);
-	if (map->texture_west != NULL && map->texture_west)
-		free(map->texture_west);
-}
-
-
-void	free_extraction(t_map *map, bool is_free)
-{
-	if (is_free)
-		free_texture(map);
-	if (map->line)
-		free_map_lines(map->line);
+	free_texture_img(mlx, &mlx->texture_north);
+	free_texture_img(mlx, &mlx->texture_south);
+	free_texture_img(mlx, &mlx->texture_west);
+	free_texture_img(mlx, &mlx->texture_east);
 }
 
 void	free_get_net_line(char *line, int fd_file)

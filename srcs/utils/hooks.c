@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:47:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/05 16:55:41 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:29:38 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	key_press(int keysym, t_mlx *data)
 	else if (keysym == XK_D || keysym == XK_d)
 		strafe_left(&data->map.player, data->map.map);
 	else if (keysym == XK_Left || keysym == XK_Up)
-		turn_left(&data->map.player);
-	else if (keysym == XK_Right || keysym == XK_Down)
 		turn_right(&data->map.player);
+	else if (keysym == XK_Right || keysym == XK_Down)
+		turn_left(&data->map.player);
 	raycasting(data);
 	draw_map(data);
 	draw_player(data, &data->map.player);

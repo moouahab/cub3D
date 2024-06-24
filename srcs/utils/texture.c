@@ -6,13 +6,13 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:59:26 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/24 13:44:38 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 15:34:33 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	calculate_texture_x(t_ray	*ray, t_texture	*texture)
+int	calculate_texture_x(t_ray *ray, t_texture *texture)
 {
 	double	wall_x;
 	int		tex_x;
