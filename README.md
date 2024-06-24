@@ -10,6 +10,74 @@ Le but principal de Cube3D est de comprendre les principes fondamentaux du rendu
 - Algorithmes de ray-casting pour le rendu des textures.
 - Optimisation de la mémoire et de la performance.
 ## Raycasting
+## Algorithme DDA (Digital Differential Analyzer)
+
+L'algorithme DDA (Digital Differential Analyzer) est une méthode informatique utilisée pour tracer des lignes droites sur des dispositifs d'affichage numériques tels que des écrans d'ordinateur. Il est particulièrement utile dans la génération de graphiques et d'images.
+
+### Principe de l'algorithme DDA
+
+L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à chaque étape pour approcher la ligne à tracer. Il utilise la formule de l'équation de la ligne \(y = mx + c\) pour déterminer les points successifs de la ligne. Les étapes principales de l'algorithme sont les suivantes :
+
+1. **Calcul de l'incrément** :
+   - On commence par calculer la différence entre les coordonnées des points de départ et d'arrivée de la ligne : 
+     \[
+     \Delta x = x_2 - x_1
+     \]
+     \[
+     \Delta y = y_2 - y_1
+     \]
+
+2. **Détermination du nombre d'étapes** :
+   - Le nombre d'étapes nécessaires pour tracer la ligne est déterminé par la plus grande des valeurs absolues de \(\Delta x\) et \(\Delta y\) :
+     \[
+     \text{steps} = \max(|\Delta x|, |\Delta y|)
+     \]
+
+3. **Calcul des incréments par étape** :
+   - Les incréments à chaque étape pour les coordonnées \(x\) et \(y\) sont calculés comme suit :
+     \[
+     x_{\text{increment}} = \frac{\Delta x}{\text{steps}}
+     \]
+     \[
+     y_{\text{increment}} = \frac{\Delta y}{\text{steps}}
+     \]
+
+4. **Initialisation des points de départ** :
+   - On initialise les coordonnées des points de départ \(x = x_1\) et \(y = y_1\).
+
+5. **Génération des points de la ligne** :
+   - On génère les points de la ligne en ajoutant les incréments calculés à chaque étape :
+     \[
+     x = x + x_{\text{increment}}
+     \]
+     \[
+     y = y + y_{\text{increment}}
+     \]
+   - Ces coordonnées sont arrondies à l'entier le plus proche pour correspondre aux pixels de l'écran.
+
+### Exemple d'implémentation en pseudo-code
+
+Voici un exemple de l'algorithme DDA en pseudo-code :
+
+```pseudo
+procedure DDA(x1, y1, x2, y2)
+    Δx := x2 - x1
+    Δy := y2 - y1
+    
+    steps := max(abs(Δx), abs(Δy))
+    
+    x_increment := Δx / steps
+    y_increment := Δy / steps
+    
+    x := x1
+    y := y1
+    
+    for i from 0 to steps do
+        plot(round(x), round(y))  // Plot the pixel at the current point
+        x := x + x_increment
+        y := y + y_increment
+end procedure
+```
 ```.c
 /**
  * Initialise les paramètres du rayon pour un certain pixel de l'écran.
