@@ -55,7 +55,7 @@ L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à
      \]
    - Ces coordonnées sont arrondies à l'entier le plus proche pour correspondre aux pixels de l'écran.
 
-#### Exemple d'implémentation en pseudo-code
+#### Exemple d'implémentation
 
 Voici un exemple d'utilisation l'algorithme DDA :
 ```.c
