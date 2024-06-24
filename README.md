@@ -57,27 +57,7 @@ L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à
 
 #### Exemple d'implémentation en pseudo-code
 
-Voici un exemple de l'algorithme DDA en pseudo-code :
-
-```pseudo
-procedure DDA(x1, y1, x2, y2)
-    Δx := x2 - x1
-    Δy := y2 - y1
-    
-    steps := max(abs(Δx), abs(Δy))
-    
-    x_increment := Δx / steps
-    y_increment := Δy / steps
-    
-    x := x1
-    y := y1
-    
-    for i from 0 to steps do
-        plot(round(x), round(y))  // Plot the pixel at the current point
-        x := x + x_increment
-        y := y + y_increment
-end procedure
-```
+Voici un exemple de l'algorithme DDA utilisation :
 ```.c
 /**
  * Initialise les paramètres du rayon pour un certain pixel de l'écran.
