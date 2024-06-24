@@ -6,7 +6,7 @@
 /*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 22:27:34 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/24 13:42:51 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 17:46:54 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <X11/keysym.h>
 # include <math.h>
 
-# define WIDTH 1024
+# define WIDTH 1000
 # define HEIGHT 800
 # define TAB_SIZE 4
 # define MOVE_SPEED 0.05
