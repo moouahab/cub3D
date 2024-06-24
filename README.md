@@ -10,7 +10,7 @@ Le but principal de Cube3D est de comprendre les principes fondamentaux du rendu
 - Algorithmes de ray-casting pour le rendu des textures.
 - Optimisation de la mémoire et de la performance.
 
-##Texture
+## Texture
 ```.c
 /**
  * Calcule la coordonnée X de la texture à afficher en fonction de la position du joueur et de la distance par rapport au mur.
