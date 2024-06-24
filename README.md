@@ -57,7 +57,7 @@ L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à
 
 #### Exemple d'implémentation en pseudo-code
 
-Voici un exemple de l'algorithme DDA utilisation :
+Voici un exemple d'utilisation l'algorithme DDA :
 ```.c
 /**
  * Initialise les paramètres du rayon pour un certain pixel de l'écran.
