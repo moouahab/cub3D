@@ -10,11 +10,11 @@ Le but principal de Cube3D est de comprendre les principes fondamentaux du rendu
 - Algorithmes de ray-casting pour le rendu des textures.
 - Optimisation de la mémoire et de la performance.
 ## Raycasting
-## Algorithme DDA (Digital Differential Analyzer)
+### Algorithme DDA (Digital Differential Analyzer)
 
 L'algorithme DDA (Digital Differential Analyzer) est une méthode informatique utilisée pour tracer des lignes droites sur des dispositifs d'affichage numériques tels que des écrans d'ordinateur. Il est particulièrement utile dans la génération de graphiques et d'images.
 
-### Principe de l'algorithme DDA
+#### Principe de l'algorithme DDA
 
 L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à chaque étape pour approcher la ligne à tracer. Il utilise la formule de l'équation de la ligne \(y = mx + c\) pour déterminer les points successifs de la ligne. Les étapes principales de l'algorithme sont les suivantes :
 
@@ -55,7 +55,7 @@ L'algorithme DDA fonctionne en incrémentant une variable par une valeur fixe à
      \]
    - Ces coordonnées sont arrondies à l'entier le plus proche pour correspondre aux pixels de l'écran.
 
-### Exemple d'implémentation en pseudo-code
+#### Exemple d'implémentation en pseudo-code
 
 Voici un exemple de l'algorithme DDA en pseudo-code :
 
