@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 22:09:33 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 14:49:57 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:41:59 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ static bool	check_player_line(char *line)
 	j = 0;
 	while (line[i])
 	{
-		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W' || line[i] == 'E')
-            j++;
-        i++;
+		if (line[i] == 'N' || line[i] == 'S' || line[i] == 'W'
+			|| line[i] == 'E')
+			j++;
+		i++;
 	}
 	if (j == 1)
-	    return (true);
+		return (true);
 	else
-	    return (false);
+		return (false);
 }
-
 
 static bool	is_player(const char strs[4], char *str, t_player *player)
 {

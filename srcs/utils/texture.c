@@ -3,43 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
+/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:59:26 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 12:30:50 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/06/24 13:44:38 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	load_texture(t_mlx *mlx, t_texture *texture, char *path)
-{
-	texture->img = mlx_xpm_file_to_image(mlx->mlx_ptr, path, &texture->width,
-			&texture->height);
-	if (!texture->img)
-	{
-		printf("Error loading texture: %s\n", path);
-		exit(EXIT_FAILURE);
-	}
-	texture->data = (int *)mlx_get_data_addr(texture->img, &texture->bpp,
-			&texture->size_line, &texture->endian);
-	if (!texture->data)
-	{
-		printf("Error getting texture data: %s\n", path);
-		exit(EXIT_FAILURE);
-	}
-}
-
-void	init_textures(t_mlx *mlx)
-{
-	load_texture(mlx, &mlx->texture_north, mlx->map.texture_north);
-	load_texture(mlx, &mlx->texture_south, mlx->map.texture_south);
-	load_texture(mlx, &mlx->texture_west, mlx->map.texture_west);
-	load_texture(mlx, &mlx->texture_east, mlx->map.texture_east);
-	free_texture(&mlx->map);
-}
-
-int	calculate_texture_x(t_ray *ray, t_texture *texture)
+int	calculate_texture_x(t_ray	*ray, t_texture	*texture)
 {
 	double	wall_x;
 	int		tex_x;
@@ -57,7 +30,7 @@ int	calculate_texture_x(t_ray *ray, t_texture *texture)
 	return (tex_x);
 }
 
-static void texture_position(t_ray *ray, t_mlx *mlx, t_texture **texture)
+static void	texture_position(t_ray *ray, t_mlx *mlx, t_texture **texture)
 {
 	if (ray->side == 0)
 	{
@@ -75,9 +48,10 @@ static void texture_position(t_ray *ray, t_mlx *mlx, t_texture **texture)
 	}
 }
 
-static void	fixed_texture(t_ray *ray, t_mlx *mlx, t_texture **texture, int *tex_x)
+static void	fixed_texture(t_ray *ray, t_mlx *mlx, t_texture **texture,
+		int *tex_x)
 {
-	double		wall_x;
+	double	wall_x;
 
 	if (ray->side == 0)
 		wall_x = mlx->map.player.corrdone.axe_ord + ray->perp_wall_dist
@@ -93,7 +67,6 @@ static void	fixed_texture(t_ray *ray, t_mlx *mlx, t_texture **texture, int *tex_
 		*tex_x = (*texture)->width - *tex_x - 1;
 }
 
-
 void	display_of_wall(t_ray *ray, int x, t_mlx *mlx, int count)
 {
 	int			tex_x;
@@ -101,7 +74,7 @@ void	display_of_wall(t_ray *ray, int x, t_mlx *mlx, int count)
 	int			d;
 	t_texture	*texture;
 
-    texture_position(ray, mlx, &texture);
+	texture_position(ray, mlx, &texture);
 	fixed_texture(ray, mlx, &texture, &tex_x);
 	while (count < ray->draw_end)
 	{
