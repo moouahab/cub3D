@@ -12,38 +12,6 @@ Le but principal de Cube3D est de comprendre les principes fondamentaux du rendu
 ## Texture
 ```.c
 /**
- * Calcule la coordonnée X de la texture à afficher en fonction de la position du joueur et de la distance par rapport au mur.
- *
- * Cette fonction calcule la position exacte où la texture doit être échantillonnée pour un rayon donné, afin de rendre correctement la texture
- * sur le mur dans un moteur de rendu 3D de type raycasting.
- *
- * @param ray Un pointeur vers la structure t_ray contenant les informations sur le rayon, y compris sa direction, la distance perpendiculaire au mur, et le côté du mur touché.
- * @param texture Un pointeur vers la structure t_texture contenant les informations sur la texture (comme sa largeur).
- * @return La coordonnée X dans la texture correspondant à l'endroit où le rayon touche le mur.
- */
-int	calculate_texture_x(t_ray *ray, t_texture *texture)
-{
-	double	wall_x;  // La position exacte du mur touché, dans les coordonnées de la texture.
-	int		tex_x;   // La coordonnée X calculée dans la texture.
-
-	// Détermine la position exacte du mur touché en fonction du côté du mur.
-	if (ray->side == 0)
-		wall_x = ray->map_y + ray->perp_wall_dist * ray->ray_dir_y;
-	else
-		wall_x = ray->map_x + ray->perp_wall_dist * ray->ray_dir_x;
-	wall_x -= floor(wall_x);  // Garde seulement la partie fractionnaire de wall_x.
-	tex_x = (int)(wall_x * (double)texture->width);  // Convertit la position en coordonnée de texture.
-
-	// Ajuste la coordonnée X en fonction de la direction du rayon et du côté du mur.
-	if (ray->side == 0 && ray->ray_dir_x > 0)
-		tex_x = texture->width - tex_x - 1;
-	if (ray->side == 1 && ray->ray_dir_y < 0)
-		tex_x = texture->width - tex_x - 1;
-
-	return (tex_x);
-}
-
-/**
  * Sélectionne la texture appropriée en fonction de la direction du rayon et du côté du mur touché.
  *
  * Cette fonction détermine quelle texture doit être utilisée pour le mur touché par le rayon,
