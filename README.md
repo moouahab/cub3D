@@ -62,12 +62,17 @@ Voici un exemple d'utilisation l'algorithme DDA :
 /**
  * Initialise les paramètres du rayon pour un certain pixel de l'écran.
  *
- * Cette fonction initialise les paramètres nécessaires pour tracer un rayon depuis la position du joueur
- * jusqu'à une certaine colonne de l'écran, en calculant la direction du rayon et d'autres paramètres nécessaires
- * pour le raycasting.
+ * Cette fonction initialise les paramètres nécessaires pour tracer un
+ * rayon depuis la position du joueur jusqu'à une certaine colonne de
+ * l'écran, en calculant la direction du rayon et d'autres paramètres
+ * nécessaires pour le raycasting.
  *
- * @param ray Un pointeur vers la structure t_ray pour stocker les informations du rayon.
- * @param mlx Un pointeur vers la structure t_mlx contenant les informations globales, y compris le joueur et la carte.
+ * @param ray Un pointeur vers la structure t_ray pour
+ * stocker les informations du rayon.
+ *
+ * @param mlx Un pointeur vers la structure t_mlx contenant les
+ * informations globales, y compris le joueur et la carte.
+ *
  * @param x La coordonnée X de la colonne de l'écran pour laquelle le rayon est initialisé.
  */
 void	init_ray(t_ray *ray, t_mlx *mlx, int x)
