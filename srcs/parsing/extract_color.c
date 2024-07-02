@@ -6,7 +6,7 @@
 /*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/29 10:56:32 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/23 12:21:05 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/07/02 23:12:39 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,8 +111,8 @@ bool	recovery_colors(char *line, t_map **map, int i)
 bool	is_init_color(t_map *map)
 {
 	if (map->color_sol.blue < 0 || map->color_sol.red < 0
-		|| map->color_sol.green < 0 || map->color_ceiling.blue > 255
-		|| map->color_ceiling.red > 255 || map->color_ceiling.green > 255)
+		|| map->color_sol.green < 0 || map->color_sol.blue > 255
+		|| map->color_sol.red > 255 || map->color_sol.green > 255)
 		return (false);
 	if (map->color_ceiling.blue < 0 || map->color_ceiling.red < 0
 		|| map->color_ceiling.green < 0 || map->color_ceiling.blue > 255

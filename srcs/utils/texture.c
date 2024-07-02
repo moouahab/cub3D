@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: moouahab <moouahab@student.42.fr>          +#+  +:+       +#+        */
+/*   By: moouahab <mohamed.ouahab1999@gmail.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/22 16:59:26 by moouahab          #+#    #+#             */
-/*   Updated: 2024/06/24 15:34:33 by moouahab         ###   ########.fr       */
+/*   Updated: 2024/07/02 23:12:11 by moouahab         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	texture_position(t_ray *ray, t_mlx *mlx, t_texture **texture)
 	if (ray->side == 0)
 	{
 		if (ray->ray_dir_x > 0)
-			*texture = &mlx->texture_north;
-		else
 			*texture = &mlx->texture_south;
+		else
+			*texture = &mlx->texture_north;
 	}
 	else
 	{
